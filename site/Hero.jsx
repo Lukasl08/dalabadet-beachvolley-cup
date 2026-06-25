@@ -1,6 +1,6 @@
-// Hero — the showpiece. A layered, illustrative Swedish-summer-beach scene
+// Hero - the showpiece. A layered, illustrative Swedish-summer-beach scene
 // (sky, soft sun, sea bands, sand, grass) with gentle parallax + the signature
-// ball-arc that draws itself once on load. No photos — graphic per the brief.
+// ball-arc that draws itself once on load. No photos - graphic per the brief.
 function Hero({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
 
@@ -79,7 +79,7 @@ function Hero({ onRegister }) {
         </svg>
       </div>
 
-      {/* Real-photo cluster — floating, gently drifting beach-volley moments */}
+      {/* Real-photo cluster - floating, gently drifting beach-volley moments */}
       <div className="hero-photos" aria-hidden="true">
         <div className="hp-wrap hp-a" data-parallax="-0.05">
           <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.dive, 700)} alt="" loading="eager" /></figure>
@@ -173,10 +173,10 @@ function Hero({ onRegister }) {
 
         <p className="hero-rise hr3" style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
-          fontWeight: 500, maxWidth: '44ch', marginTop: '0.9em',
+          fontWeight: 500, maxWidth: '44ch', marginTop: '2.7em',
         }}>Ta med kompisarna, kliv ner i sanden och spela boll en hel sommardag på
-          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning —
-          alla är välkomna att vara med.</p>
+          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning.
+          Alla är välkomna att vara med.</p>
 
         <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
           <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>

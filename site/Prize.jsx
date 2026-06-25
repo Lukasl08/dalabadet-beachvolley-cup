@@ -1,4 +1,4 @@
-// Prize — "Att spela om". A tasteful winner moment, not a commercial prize wall
+// Prize - "Att spela om". A tasteful winner moment, not a commercial prize wall
 // (the event isn't prize-driven). One dark feature panel with a podium graphic.
 function Prize() {
   const { Card, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
@@ -17,7 +17,7 @@ function Prize() {
               <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.45em 0 0.3em' }}>Dagens mästare</h2>
               <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
                 Vinnarlaget koras till Dagens mästare och tar emot priser värda
-                upp till 200 kr under prisutdelningen — plus äran och skryträtten
+                upp till 200 kr under prisutdelningen, plus äran och skryträtten
                 ända till nästa sommar.
               </p>
               <p style={{ color: 'var(--text-on-dark-muted)', maxWidth: '40ch' }}>

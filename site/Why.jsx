@@ -1,9 +1,9 @@
-// Why — "Varför delta?" Four warm reasons, told in an editorial, hand-made way
+// Why - "Varför delta?" Four warm reasons, told in an editorial, hand-made way
 // rather than as four identical icon-cards (which read too "templated"). Each
 // reason is an index entry: a mono numeral on a hairline rule, a heading with a
 // hand-drawn underline, and a short paragraph. No boxes, no tinted icon tiles.
 function Why() {
-  // Hand-drawn underline strokes — slightly irregular so they read as marker,
+  // Hand-drawn underline strokes - slightly irregular so they read as marker,
   // not as a CSS border. A few variants for rhythm.
   const underlines = [
     'M3 9 C 40 3, 96 13, 150 6 S 232 3, 250 8',
@@ -13,10 +13,10 @@ function Why() {
   ];
 
   const items = [
-    { tone: 'var(--sea)',  title: 'Spela & tävla',  body: 'Mät er mot andra lag i glada matcher på sanden. Alla spelar i samma turnering — kämpa om segern, men framför allt ha skoj.' },
+    { tone: 'var(--sea)',  title: 'Spela & tävla',  body: 'Mät er mot andra lag i glada matcher på sanden. Alla spelar i samma turnering. Kämpa om segern, men framför allt ha skoj.' },
     { tone: 'var(--dune)', title: 'Sommarkänsla',   body: 'Strand, hav, sol och härlig stämning hela dagen. En riktig sommardag vid Sveriges sydligaste badstrand.' },
     { tone: 'var(--sea)',  title: 'Gemenskap',      body: 'Träffa nya människor, häng med gamla kompisar och umgås i sanden. Hela dagen handlar om att komma samman.' },
-    { tone: 'var(--dune)', title: 'Upplevelsen',    body: 'En dag som sticker ut från resten av sommaren — boll, skratt och minnen du bär med dig långt efter att solen gått ner.' },
+    { tone: 'var(--dune)', title: 'Upplevelsen',    body: 'En dag som sticker ut från resten av sommaren, med boll, skratt och minnen du bär med dig långt efter att solen gått ner.' },
   ];
 
   return (

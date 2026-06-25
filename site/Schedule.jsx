@@ -1,10 +1,10 @@
-// Schedule — "Dagen i detalj" as a vertical journey timeline. Mono times,
+// Schedule - "Dagen i detalj" as a vertical journey timeline. Mono times,
 // a connecting rail, and dots that fill royal as each step rises into view.
 function Schedule() {
   const rows = [
     { t: '09:00', a: 'Incheckning & uppvärmning', n: 'Hämta nummerlapp, hitta er plan och mjuka upp i sanden.' },
-    { t: '10:00', a: 'Turneringen drar igång', n: 'Gruppspel — alla lag spelar tillsammans i samma turnering.' },
-    { t: '12:30', a: 'Lunchpaus', n: 'Ta med egen matsäck — dryck finns att köpa på stranden. Ladda om inför eftermiddagen.' },
+    { t: '10:00', a: 'Turneringen drar igång', n: 'Gruppspel, alla lag spelar tillsammans i samma turnering.' },
+    { t: '12:30', a: 'Lunchpaus', n: 'Ta med egen matsäck. Dryck finns att köpa på stranden. Ladda om inför eftermiddagen.' },
     { t: '13:30', a: 'Slutspel', n: 'De bästa lagen gör upp i utslagsmatcher.' },
     { t: '16:00', a: 'Final & prisutdelning', n: 'Vi koras dagens mästare och delar ut priset.' },
     { t: '16:30', a: 'Häng kvar på stranden', n: 'Stanna, umgås och njut av kvällen vid havet.' },
@@ -18,7 +18,7 @@ function Schedule() {
           <div className="ds-eyebrow">Schema</div>
           <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dagen i detalj</h2>
           <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
-            En resa genom dagen — från första serve till solnedgång. Ungefärliga
+            En resa genom dagen, från första serve till solnedgång. Ungefärliga
             tider, vi justerar på plats efter hur många lag som dyker upp.
           </p>
         </div>

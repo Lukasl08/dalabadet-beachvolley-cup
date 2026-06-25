@@ -1,6 +1,6 @@
-// Registration — the page climax. Dark sea-deep ground with the embedded,
+// Registration - the page climax. Dark sea-deep ground with the embedded,
 // validated anmälningsformulär. Fields in brief order: Lagnamn, Kontaktperson,
-// E-post, Telefon, Antal spelare (2–6, fyra vanligast). Frontend-only: it
+// E-post, Telefon, Antal spelare (2-6, fyra vanligast). Frontend-only: it
 // validates, then swaps to a warm confirmation. No backend yet.
 // TODO: koppla submit till riktig mottagare (mejl / Google Sheet / databas).
 function Registration({ onRegister }) {
@@ -60,7 +60,7 @@ function Registration({ onRegister }) {
           <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.3em 0 0.35em' }}>Anmäl ditt lag</h2>
           <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
             Anmälningsavgiften är 350 kr per lag och det går snabbt att anmäla
-            sig. Anmäl er så snart som möjligt — sista anmälningsdag meddelas
+            sig. Anmäl er så snart som möjligt. Sista anmälningsdag meddelas
             senare. Det finns ingen gräns för antal lag, så alla som vill får plats.
           </p>
 
@@ -91,7 +91,7 @@ function Registration({ onRegister }) {
               <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--dune)', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.78rem' }}>✓ Anmälan mottagen</div>
               <h3 style={{ fontSize: 'var(--fs-h2)', margin: '0.45em 0 0.3em' }}>Tack, {values.team || 'laget'}!</h3>
               <p style={{ color: 'var(--text-body)', margin: '0 auto', maxWidth: '34ch' }}>
-                Ni är anmälda — vi hör av oss innan turneringen. Vi ses på Dalabadet!
+                Ni är anmälda. Vi hör av oss innan turneringen. Vi ses på Dalabadet!
               </p>
               <div style={{ marginTop: 'var(--space-5)' }}>
                 <Button variant="secondary" onClick={reset}>Anmäl ett lag till</Button>

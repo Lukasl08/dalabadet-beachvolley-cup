@@ -1,7 +1,7 @@
-// Follow — a calm "håll koll"-strip before the registration. Honest about the
+// Follow - a calm "håll koll"-strip before the registration. Honest about the
 // fact that the date and channels aren't set yet: invites people to follow on
 // social for the date drop. No fake sponsors, no fake date.
-// Social accounts not chosen yet — placeholder hrefs, swap when ready.
+// Social accounts not chosen yet - placeholder hrefs, swap when ready.
 function Follow() {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
 
@@ -34,7 +34,7 @@ function Follow() {
             <h2 style={{ fontSize: 'var(--fs-h1)', marginTop: '0.3em', maxWidth: '16ch' }}>Datum meddelas snart</h2>
             <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '42ch', margin: '0.6em 0 0' }}>
               Vi spikar datumet inom kort. Följ oss på sociala medier så är du
-              först att veta när det är dags — och missa inte starten av anmälan.
+              först att veta när det är dags, och missa inte starten av anmälan.
             </p>
           </div>
 

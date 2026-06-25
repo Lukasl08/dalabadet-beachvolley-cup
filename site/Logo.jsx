@@ -1,4 +1,4 @@
-// Logo — text-based placeholder logo in the display font, no icon/mark.
+// Logo - text-based placeholder logo in the display font, no icon/mark.
 // Built as its own component so it can be swapped for an image file later.
 function Logo({ onDark = false, compact = false }) {
   const color = onDark ? 'var(--white)' : 'var(--sea-deep)';

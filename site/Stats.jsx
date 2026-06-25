@@ -1,4 +1,4 @@
-// Stats — a short band of honest, punchy facts that count up the first time
+// Stats - a short band of honest, punchy facts that count up the first time
 // they scroll into view. Numbers only where they're true (no invented figures):
 // one full day, four per team, ~7 hours of play, 100% summer feeling.
 function useCountUp(target, suffix, run) {

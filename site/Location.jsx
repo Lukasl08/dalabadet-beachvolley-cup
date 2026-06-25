@@ -1,4 +1,4 @@
-// Location — Dalabadet copy + an illustrative map graphic (no fake photos).
+// Location - Dalabadet copy + an illustrative map graphic (no fake photos).
 function Location() {
   const { Card, Button, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   const facts = ['Sveriges sydligaste badstrand', 'Långgrunt vatten', 'Gott om plats i sanden'];
@@ -11,7 +11,7 @@ function Location() {
             <div className="ds-eyebrow">Plats</div>
             <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dalabadet, Trelleborg</h2>
             <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '44ch' }}>
-              Vi spelar på sandstranden vid Dalabadet — Sveriges sydligaste badstrand,
+              Vi spelar på sandstranden vid Dalabadet, Sveriges sydligaste badstrand,
               med långgrunt vatten och gott om plats. Lätt att ta sig till och perfekt
               för en hel dag vid havet.
             </p>
@@ -24,7 +24,7 @@ function Location() {
             </div>
           </div>
 
-          {/* Real, embedded map (satellite/hybrid — Google Earth-like) of Dalabadet. */}
+          {/* Real, embedded map (satellite/hybrid - Google Earth-like) of Dalabadet. */}
           <Card tone="raised" padding="none" className="reveal reveal-d2" style={{ overflow: 'hidden', position: 'relative' }}>
             <div style={{ position: 'relative', width: '100%', aspectRatio: '520 / 380', background: 'var(--sea-tint-1)' }}>
               <iframe

@@ -1,4 +1,4 @@
-// Nav — sticky, frosts on scroll. Section links + the single primary action.
+// Nav - sticky, frosts on scroll. Section links + the single primary action.
 // Adds a calm mobile menu (sheet) since the page is now long.
 function Nav({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;

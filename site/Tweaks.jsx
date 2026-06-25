@@ -1,4 +1,4 @@
-// Tweaks — a large, playful control surface that reshapes the whole page.
+// Tweaks - a large, playful control surface that reshapes the whole page.
 // Everything is applied non-destructively: CSS-variable overrides + extra rules
 // are written into a single <style id="tweak-overrides"> block, a parallax
 // multiplier global is set, and optional sections are shown/hidden. The section

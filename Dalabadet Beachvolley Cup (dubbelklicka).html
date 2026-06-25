@@ -826,9 +826,9 @@ __ds_ns.Select = __ds_scope.Select;
 
 <script type="text/babel" data-presets="react">
 /* === site/images.jsx (inbakat) === */
-// images.jsx — shared real photography for the site.
+// images.jsx - shared real photography for the site.
 // Source: Pexels (free to use, no attribution required). Hand-picked casual
-// beach-volleyball scenes — warm sun, sand and sea, friends playing — chosen to
+// beach-volleyball scenes - warm sun, sand and sea, friends playing - chosen to
 // sit naturally on the sand+sea palette. No stadium crowds, no competition halls.
 // Each entry is a Pexels photo id; BV_IMG builds a width-optimised URL.
 window.BV_IMG = (id, w = 1200) =>
@@ -852,11 +852,10 @@ window.BV_PHOTOS = {
 // Warm the cache for the shots that appear early so the page feels instant.
 [window.BV_PHOTOS.dive, window.BV_PHOTOS.friends, window.BV_PHOTOS.heroAction, window.BV_PHOTOS.jump]
   .forEach((id) => { const i = new Image(); i.src = window.BV_IMG(id, 900); });
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Logo.jsx (inbakat) === */
-// Logo — text-based placeholder logo in the display font, no icon/mark.
+// Logo - text-based placeholder logo in the display font, no icon/mark.
 // Built as its own component so it can be swapped for an image file later.
 function Logo({ onDark = false, compact = false }) {
   const color = onDark ? 'var(--white)' : 'var(--sea-deep)';
@@ -879,11 +878,10 @@ function Logo({ onDark = false, compact = false }) {
   );
 }
 window.Logo = Logo;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Nav.jsx (inbakat) === */
-// Nav — sticky, frosts on scroll. Section links + the single primary action.
+// Nav - sticky, frosts on scroll. Section links + the single primary action.
 // Adds a calm mobile menu (sheet) since the page is now long.
 function Nav({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
@@ -981,13 +979,12 @@ function Nav({ onRegister }) {
   );
 }
 window.Nav = Nav;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Hero.jsx (inbakat) === */
-// Hero — the showpiece. A layered, illustrative Swedish-summer-beach scene
+// Hero - the showpiece. A layered, illustrative Swedish-summer-beach scene
 // (sky, soft sun, sea bands, sand, grass) with gentle parallax + the signature
-// ball-arc that draws itself once on load. No photos — graphic per the brief.
+// ball-arc that draws itself once on load. No photos - graphic per the brief.
 function Hero({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
 
@@ -1066,7 +1063,7 @@ function Hero({ onRegister }) {
         </svg>
       </div>
 
-      {/* Real-photo cluster — floating, gently drifting beach-volley moments */}
+      {/* Real-photo cluster - floating, gently drifting beach-volley moments */}
       <div className="hero-photos" aria-hidden="true">
         <div className="hp-wrap hp-a" data-parallax="-0.05">
           <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.dive, 700)} alt="" loading="eager" /></figure>
@@ -1160,10 +1157,10 @@ function Hero({ onRegister }) {
 
         <p className="hero-rise hr3" style={{
           fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
-          fontWeight: 500, maxWidth: '44ch', marginTop: '0.9em',
+          fontWeight: 500, maxWidth: '44ch', marginTop: '2.7em',
         }}>Ta med kompisarna, kliv ner i sanden och spela boll en hel sommardag på
-          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning —
-          alla är välkomna att vara med.</p>
+          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning.
+          Alla är välkomna att vara med.</p>
 
         <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
           <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>
@@ -1187,11 +1184,10 @@ function Hero({ onRegister }) {
   );
 }
 window.Hero = Hero;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Marquee.jsx (inbakat) === */
-// Marquee — a living strip of real beach-volley moments that scrolls forever
+// Marquee - a living strip of real beach-volley moments that scrolls forever
 // between the hero and the content. Adds energy and "something is happening",
 // while quietly previewing the photography to come. Pauses on hover.
 function Marquee() {
@@ -1253,16 +1249,15 @@ function Marquee() {
   );
 }
 window.Marquee = Marquee;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Why.jsx (inbakat) === */
-// Why — "Varför delta?" Four warm reasons, told in an editorial, hand-made way
+// Why - "Varför delta?" Four warm reasons, told in an editorial, hand-made way
 // rather than as four identical icon-cards (which read too "templated"). Each
 // reason is an index entry: a mono numeral on a hairline rule, a heading with a
 // hand-drawn underline, and a short paragraph. No boxes, no tinted icon tiles.
 function Why() {
-  // Hand-drawn underline strokes — slightly irregular so they read as marker,
+  // Hand-drawn underline strokes - slightly irregular so they read as marker,
   // not as a CSS border. A few variants for rhythm.
   const underlines = [
     'M3 9 C 40 3, 96 13, 150 6 S 232 3, 250 8',
@@ -1272,10 +1267,10 @@ function Why() {
   ];
 
   const items = [
-    { tone: 'var(--sea)',  title: 'Spela & tävla',  body: 'Mät er mot andra lag i glada matcher på sanden. Alla spelar i samma turnering — kämpa om segern, men framför allt ha skoj.' },
+    { tone: 'var(--sea)',  title: 'Spela & tävla',  body: 'Mät er mot andra lag i glada matcher på sanden. Alla spelar i samma turnering. Kämpa om segern, men framför allt ha skoj.' },
     { tone: 'var(--dune)', title: 'Sommarkänsla',   body: 'Strand, hav, sol och härlig stämning hela dagen. En riktig sommardag vid Sveriges sydligaste badstrand.' },
     { tone: 'var(--sea)',  title: 'Gemenskap',      body: 'Träffa nya människor, häng med gamla kompisar och umgås i sanden. Hela dagen handlar om att komma samman.' },
-    { tone: 'var(--dune)', title: 'Upplevelsen',    body: 'En dag som sticker ut från resten av sommaren — boll, skratt och minnen du bär med dig långt efter att solen gått ner.' },
+    { tone: 'var(--dune)', title: 'Upplevelsen',    body: 'En dag som sticker ut från resten av sommaren, med boll, skratt och minnen du bär med dig långt efter att solen gått ner.' },
   ];
 
   return (
@@ -1293,7 +1288,6 @@ function Why() {
           {items.map((it, i) => (
             <article key={it.title} className={`why-item reveal reveal-d${(i % 4) + 1}`}>
               <div className="why-index">
-                <span className="why-num" style={{ color: it.tone }}>{String(i + 1).padStart(2, '0')}</span>
                 <span className="why-rule"></span>
               </div>
               <h3 className="why-title">
@@ -1344,11 +1338,10 @@ function Why() {
   );
 }
 window.Why = Why;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Stats.jsx (inbakat) === */
-// Stats — a short band of honest, punchy facts that count up the first time
+// Stats - a short band of honest, punchy facts that count up the first time
 // they scroll into view. Numbers only where they're true (no invented figures):
 // one full day, four per team, ~7 hours of play, 100% summer feeling.
 function useCountUp(target, suffix, run) {
@@ -1435,17 +1428,16 @@ function Stats() {
   );
 }
 window.Stats = Stats;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Schedule.jsx (inbakat) === */
-// Schedule — "Dagen i detalj" as a vertical journey timeline. Mono times,
+// Schedule - "Dagen i detalj" as a vertical journey timeline. Mono times,
 // a connecting rail, and dots that fill royal as each step rises into view.
 function Schedule() {
   const rows = [
     { t: '09:00', a: 'Incheckning & uppvärmning', n: 'Hämta nummerlapp, hitta er plan och mjuka upp i sanden.' },
-    { t: '10:00', a: 'Turneringen drar igång', n: 'Gruppspel — alla lag spelar tillsammans i samma turnering.' },
-    { t: '12:30', a: 'Lunchpaus', n: 'Ta med egen matsäck — dryck finns att köpa på stranden. Ladda om inför eftermiddagen.' },
+    { t: '10:00', a: 'Turneringen drar igång', n: 'Gruppspel, alla lag spelar tillsammans i samma turnering.' },
+    { t: '12:30', a: 'Lunchpaus', n: 'Ta med egen matsäck. Dryck finns att köpa på stranden. Ladda om inför eftermiddagen.' },
     { t: '13:30', a: 'Slutspel', n: 'De bästa lagen gör upp i utslagsmatcher.' },
     { t: '16:00', a: 'Final & prisutdelning', n: 'Vi koras dagens mästare och delar ut priset.' },
     { t: '16:30', a: 'Häng kvar på stranden', n: 'Stanna, umgås och njut av kvällen vid havet.' },
@@ -1459,7 +1451,7 @@ function Schedule() {
           <div className="ds-eyebrow">Schema</div>
           <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dagen i detalj</h2>
           <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
-            En resa genom dagen — från första serve till solnedgång. Ungefärliga
+            En resa genom dagen, från första serve till solnedgång. Ungefärliga
             tider, vi justerar på plats efter hur många lag som dyker upp.
           </p>
         </div>
@@ -1503,19 +1495,18 @@ function Schedule() {
   );
 }
 window.Schedule = Schedule;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Moment.jsx (inbakat) === */
-// Moment — the emotional centrepiece. A full-bleed photograph with a slow
+// Moment - the emotional centrepiece. A full-bleed photograph with a slow
 // parallax + Ken Burns drift and a dark scrim, big aspirational copy and a CTA.
 // This is the "you don't want to miss this" beat of the page.
 function Moment({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   return (
     <section className="bv-moment" id="kanslan">
-      <div className="bv-moment-bg" data-parallax="0.14" aria-hidden="true"
-        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.menPlay, 1600)})` }}></div>
+      <div className="bv-moment-bg" data-parallax="0.05" aria-hidden="true"
+        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.dive, 1600)})` }}></div>
       <div className="bv-moment-scrim" aria-hidden="true"></div>
 
       <div className="ds-container bv-moment-inner">
@@ -1527,7 +1518,7 @@ function Moment({ onRegister }) {
           <p style={{ color: 'rgba(251,248,241,0.92)', fontSize: 'var(--fs-lead)', maxWidth: '44ch', marginTop: '1em', textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}>
             Barfota i varm sand, havet som glittrar, bollen i luften och gänget
             som hejar. Det här är dagen alla snackar om långt efter att solen
-            gått ner. Var med från start — kliv i sanden och spela.
+            gått ner. Var med från start. Kliv i sanden och spela.
           </p>
           <div style={{ display: 'flex', gap: '12px', marginTop: '1.6em', flexWrap: 'wrap' }}>
             <Button variant="primary" size="lg" onClick={onRegister}>Säkra din plats</Button>
@@ -1541,17 +1532,17 @@ function Moment({ onRegister }) {
         .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
         .bv-moment-bg {
           position: absolute; left: 0; right: 0; top: -12%; height: 124%;
-          background-size: cover; background-position: center 40%; z-index: 0; will-change: transform;
+          background-size: cover; background-position: center 35%; z-index: 0; will-change: transform;
         }
         @media (prefers-reduced-motion: no-preference) {
           .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }
         }
-        @keyframes momentKen { from { background-size: 112%; } to { background-size: 126%; } }
+        @keyframes momentKen { from { background-size: 102%; } to { background-size: 110%; } }
         .bv-moment-scrim {
           position: absolute; inset: 0; z-index: 1;
           background:
-            linear-gradient(180deg, rgba(27,71,80,0.25) 0%, rgba(27,71,80,0) 30%, rgba(27,71,80,0.15) 55%, rgba(27,71,80,0.78) 100%),
-            linear-gradient(90deg, rgba(27,71,80,0.55) 0%, rgba(27,71,80,0.1) 55%, rgba(27,71,80,0) 100%);
+            linear-gradient(180deg, rgba(27,71,80,0.20) 0%, rgba(27,71,80,0) 35%, rgba(27,71,80,0.10) 60%, rgba(27,71,80,0.62) 100%),
+            linear-gradient(90deg, rgba(27,71,80,0.62) 0%, rgba(27,71,80,0.12) 50%, rgba(27,71,80,0) 78%);
         }
         .bv-moment-inner { position: relative; z-index: 2; padding-top: var(--space-10); padding-bottom: var(--space-9); }
       `}</style>
@@ -1559,11 +1550,10 @@ function Moment({ onRegister }) {
   );
 }
 window.Moment = Moment;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Prize.jsx (inbakat) === */
-// Prize — "Att spela om". A tasteful winner moment, not a commercial prize wall
+// Prize - "Att spela om". A tasteful winner moment, not a commercial prize wall
 // (the event isn't prize-driven). One dark feature panel with a podium graphic.
 function Prize() {
   const { Card, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
@@ -1581,8 +1571,9 @@ function Prize() {
               <Badge tone="royal" style={{ background: 'rgba(44,75,212,0.22)', color: '#cdd5f7' }}>Att spela om</Badge>
               <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.45em 0 0.3em' }}>Dagens mästare</h2>
               <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
-                Vinnarlaget koras till Dagens mästare och tar emot priset under
-                prisutdelningen — plus äran och skryträtten ända till nästa sommar.
+                Vinnarlaget koras till Dagens mästare och tar emot priser värda
+                upp till 200 kr under prisutdelningen, plus äran och skryträtten
+                ända till nästa sommar.
               </p>
               <p style={{ color: 'var(--text-on-dark-muted)', maxWidth: '40ch' }}>
                 Men ärligt talat: efter en hel dag med boll, bad och sol går alla
@@ -1621,11 +1612,10 @@ function Prize() {
   );
 }
 window.Prize = Prize;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Gallery.jsx (inbakat) === */
-// Gallery — "Bilder från sanden". A bento grid of real beach-volley photos with
+// Gallery - "Bilder från sanden". A bento grid of real beach-volley photos with
 // staggered reveal, hover zoom and a caption that rises on hover. Gives the page
 // a confident, editorial block of photography.
 function Gallery() {
@@ -1648,15 +1638,14 @@ function Gallery() {
           <div className="ds-eyebrow">Galleri</div>
           <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Bilder från sanden</h2>
           <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
-            Sol, hopp och full fart vid nätet — så här ser en dag på stranden ut.
+            Sol, hopp och full fart vid nätet. Så här ser en dag på stranden ut.
           </p>
         </div>
 
         <div className="gallery-grid">
           {shots.map((s, i) => (
             <figure key={i} className={`gcell reveal reveal-d${(i % 4) + 1} ${s.cls}`}>
-              <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley — ${s.label}`} loading="lazy" />
-              <figcaption><span>{s.label}</span></figcaption>
+              <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley ${s.label}`} loading="lazy" />
             </figure>
           ))}
         </div>
@@ -1699,11 +1688,10 @@ function Gallery() {
   );
 }
 window.Gallery = Gallery;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Location.jsx (inbakat) === */
-// Location — Dalabadet copy + an illustrative map graphic (no fake photos).
+// Location - Dalabadet copy + an illustrative map graphic (no fake photos).
 function Location() {
   const { Card, Button, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   const facts = ['Sveriges sydligaste badstrand', 'Långgrunt vatten', 'Gott om plats i sanden'];
@@ -1716,7 +1704,7 @@ function Location() {
             <div className="ds-eyebrow">Plats</div>
             <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dalabadet, Trelleborg</h2>
             <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '44ch' }}>
-              Vi spelar på sandstranden vid Dalabadet — Sveriges sydligaste badstrand,
+              Vi spelar på sandstranden vid Dalabadet, Sveriges sydligaste badstrand,
               med långgrunt vatten och gott om plats. Lätt att ta sig till och perfekt
               för en hel dag vid havet.
             </p>
@@ -1729,12 +1717,12 @@ function Location() {
             </div>
           </div>
 
-          {/* Real, embedded map (satellite/hybrid — Google Earth-like) of Dalabadet. */}
+          {/* Real, embedded map (satellite/hybrid - Google Earth-like) of Dalabadet. */}
           <Card tone="raised" padding="none" className="reveal reveal-d2" style={{ overflow: 'hidden', position: 'relative' }}>
             <div style={{ position: 'relative', width: '100%', aspectRatio: '520 / 380', background: 'var(--sea-tint-1)' }}>
               <iframe
                 title="Karta över Dalabadet, Trelleborg"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=13.1800%2C55.3655%2C13.2130%2C55.3800&layer=mapnik&marker=55.3727%2C13.1969"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=13.1900%2C55.3600%2C13.2200%2C55.3740&layer=mapnik&marker=55.3669%2C13.2047"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}
@@ -1761,11 +1749,10 @@ function Location() {
   );
 }
 window.Location = Location;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Faq.jsx (inbakat) === */
-// FAQ — elegant accordion. Single-open, animated height, rotates the + into ×.
+// FAQ - elegant accordion. Single-open, animated height, rotates the + into ×.
 function FaqItem({ q, a, open, onToggle }) {
   const ref = React.useRef(null);
   const [h, setH] = React.useState(0);
@@ -1792,10 +1779,10 @@ function Faq() {
   const items = [
     { q: 'Hur många spelare får vara i ett lag?', a: 'Varje lag är 4 spelare. Ange kontaktperson i anmälan, så löser vi resten på plats.' },
     { q: 'Behöver man vara erfaren?', a: 'Nej. Alla nivåer är välkomna och spelar i samma turnering, oavsett kön och vana. Vi hejar lika hårt på nybörjarna som på proffsen, det viktiga är att ha kul.' },
-    { q: 'Vad kostar det?', a: 'Anmälningsavgiften är ca 299 kr per lag. Ta med egen matsäck — dryck finns att köpa på stranden under dagen.' },
+    { q: 'Vad kostar det?', a: 'Anmälningsavgiften är 350 kr per lag. Ta med egen matsäck. Dryck finns att köpa på stranden under dagen.' },
     { q: 'Vad ingår?', a: 'Spel hela dagen, plats i sanden, schema och en härlig dag vid havet. Finalen avslutas med prisutdelning där dagens mästare koras.' },
-    { q: 'Hur anmäler man sig?', a: 'Fyll i anmälningsformuläret längre ner på sidan — lagnamn, kontaktperson, e-post, telefon och antal spelare (4 per lag). Ni får en bekräftelse, och vi hör av oss innan turneringen.' },
-    { q: 'Finns det olika klasser?', a: 'Nej, inga klasser eller divisioner. Alla lag spelar tillsammans i samma turnering. Det finns heller ingen gräns för antal lag — alla som anmäler sig får plats.' },
+    { q: 'Hur anmäler man sig?', a: 'Fyll i anmälningsformuläret längre ner på sidan: lagnamn, kontaktperson, e-post, telefon och antal spelare (4 per lag). Ni får en bekräftelse, och vi hör av oss innan turneringen.' },
+    { q: 'Finns det olika klasser?', a: 'Nej, inga klasser eller divisioner. Alla lag spelar tillsammans i samma turnering. Det finns heller ingen gräns för antal lag, alla som anmäler sig får plats.' },
   ];
   return (
     <section id="fragor" style={{ position: 'relative', background: 'var(--sand)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
@@ -1814,14 +1801,13 @@ function Faq() {
   );
 }
 window.Faq = Faq;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Follow.jsx (inbakat) === */
-// Follow — a calm "håll koll"-strip before the registration. Honest about the
+// Follow - a calm "håll koll"-strip before the registration. Honest about the
 // fact that the date and channels aren't set yet: invites people to follow on
 // social for the date drop. No fake sponsors, no fake date.
-// Social accounts not chosen yet — placeholder hrefs, swap when ready.
+// Social accounts not chosen yet - placeholder hrefs, swap when ready.
 function Follow() {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
 
@@ -1854,7 +1840,7 @@ function Follow() {
             <h2 style={{ fontSize: 'var(--fs-h1)', marginTop: '0.3em', maxWidth: '16ch' }}>Datum meddelas snart</h2>
             <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '42ch', margin: '0.6em 0 0' }}>
               Vi spikar datumet inom kort. Följ oss på sociala medier så är du
-              först att veta när det är dags — och missa inte starten av anmälan.
+              först att veta när det är dags, och missa inte starten av anmälan.
             </p>
           </div>
 
@@ -1887,13 +1873,12 @@ function Follow() {
   );
 }
 window.Follow = Follow;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Registration.jsx (inbakat) === */
-// Registration — the page climax. Dark sea-deep ground with the embedded,
+// Registration - the page climax. Dark sea-deep ground with the embedded,
 // validated anmälningsformulär. Fields in brief order: Lagnamn, Kontaktperson,
-// E-post, Telefon, Antal spelare (2–6, fyra vanligast). Frontend-only: it
+// E-post, Telefon, Antal spelare (2-6, fyra vanligast). Frontend-only: it
 // validates, then swaps to a warm confirmation. No backend yet.
 // TODO: koppla submit till riktig mottagare (mejl / Google Sheet / databas).
 function Registration({ onRegister }) {
@@ -1952,13 +1937,13 @@ function Registration({ onRegister }) {
           <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.7)' }}>Anmälan</div>
           <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.3em 0 0.35em' }}>Anmäl ditt lag</h2>
           <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
-            Anmälningsavgiften är ca 299 kr per lag och det går snabbt att anmäla
-            sig. Anmäl er så snart som möjligt — sista anmälningsdag meddelas
+            Anmälningsavgiften är 350 kr per lag och det går snabbt att anmäla
+            sig. Anmäl er så snart som möjligt. Sista anmälningsdag meddelas
             senare. Det finns ingen gräns för antal lag, så alla som vill får plats.
           </p>
 
           <ul style={{ listStyle: 'none', padding: 0, margin: 'var(--space-6) 0 0', display: 'grid', gap: 'var(--space-3)' }}>
-            {['Ca 299 kr per lag', 'Alla nivåer spelar tillsammans', '4 spelare per lag'].map((t) => (
+            {['350 kr per lag', 'Alla nivåer spelar tillsammans', '4 spelare per lag'].map((t) => (
               <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--white)', fontSize: 'var(--fs-body)' }}>
                 <span style={{
                   flex: 'none', width: '26px', height: '26px', borderRadius: '999px',
@@ -1984,7 +1969,7 @@ function Registration({ onRegister }) {
               <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--dune)', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.78rem' }}>✓ Anmälan mottagen</div>
               <h3 style={{ fontSize: 'var(--fs-h2)', margin: '0.45em 0 0.3em' }}>Tack, {values.team || 'laget'}!</h3>
               <p style={{ color: 'var(--text-body)', margin: '0 auto', maxWidth: '34ch' }}>
-                Ni är anmälda — vi hör av oss innan turneringen. Vi ses på Dalabadet!
+                Ni är anmälda. Vi hör av oss innan turneringen. Vi ses på Dalabadet!
               </p>
               <div style={{ marginTop: 'var(--space-5)' }}>
                 <Button variant="secondary" onClick={reset}>Anmäl ett lag till</Button>
@@ -2004,7 +1989,7 @@ function Registration({ onRegister }) {
                 <Button type="submit" variant="primary" size="lg" fullWidth>Skicka anmälan</Button>
               </div>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', color: 'var(--text-muted)', textAlign: 'center', margin: 0 }}>
-                299 kr/lag · Inga klasser · Alla välkomna
+                350 kr/lag · Inga klasser · Alla välkomna
               </p>
             </form>
           )}
@@ -2014,13 +1999,12 @@ function Registration({ onRegister }) {
   );
 }
 window.Registration = Registration;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Footer.jsx (inbakat) === */
-// Footer — dark sea-deep base. Swappable text logo, page links matching the
+// Footer - dark sea-deep base. Swappable text logo, page links matching the
 // real sections, a contact placeholder and social placeholders.
-// Contact details + social accounts not set yet — swap when available.
+// Contact details + social accounts not set yet - swap when available.
 function Footer() {
   const linkStyle = {
     fontFamily: 'var(--font-body)', color: 'var(--text-on-dark-muted)',
@@ -2049,7 +2033,7 @@ function Footer() {
             <Logo onDark />
             <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-4)', maxWidth: '30ch' }}>
               En lokal beachvolleydag på Dalabadet i Trelleborg. Kom och spela,
-              häng och umgås — alla är välkomna.
+              häng och umgås, alla är välkomna.
             </p>
           </div>
 
@@ -2105,7 +2089,6 @@ function Footer() {
   );
 }
 window.Footer = Footer;
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/tweaks-panel.jsx (inbakat) === */
@@ -2159,11 +2142,11 @@ window.Footer = Footer;
 //     );
 //   }
 //
-// TweakRadio is the segmented control for 2–3 short options (auto-falls-back to
+// TweakRadio is the segmented control for 2-3 short options (auto-falls-back to
 // TweakSelect past ~16/~10 chars per label); reach for TweakSelect directly when
 // options are many or long. For color tweaks always curate 3-4 options rather than
-// a free picker; an option can also be a whole 2–5 color palette (the stored value
-// is the array). The Tweak* controls are a floor, not a ceiling — build custom
+// a free picker; an option can also be a whole 2-5 color palette (the stored value
+// is the array). The Tweak* controls are a floor, not a ceiling - build custom
 // controls inside the panel if a tweak calls for UI they don't cover.
 /* END USAGE */
 // ─────────────────────────────────────────────────────────────────────────────
@@ -2292,7 +2275,7 @@ function useTweaks(defaults) {
     setValues((prev) => ({ ...prev, ...edits }));
     window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
     // Same-window signal so in-page listeners (deck-stage rail thumbnails)
-    // can react — the parent message only reaches the host, not peers.
+    // can react - the parent message only reaches the host, not peers.
     window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
   }, []);
   return [values, setTweak];
@@ -2300,7 +2283,7 @@ function useTweaks(defaults) {
 
 // ── TweaksPanel ─────────────────────────────────────────────────────────────
 // Floating shell. Registers the protocol listener BEFORE announcing
-// availability — if the announce ran first, the host's activate could land
+// availability - if the announce ran first, the host's activate could land
 // before our handler exists and the toolbar toggle would silently no-op.
 // The close button posts __edit_mode_dismissed so the host's toolbar toggle
 // flips off in lockstep; the host echoes __deactivate_edit_mode back which
@@ -2444,20 +2427,20 @@ function TweakRadio({ label, value, options, onChange }) {
   const trackRef = React.useRef(null);
   const [dragging, setDragging] = React.useState(false);
   // The active value is read by pointer-move handlers attached for the lifetime
-  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  // of a drag - ref it so a stale closure doesn't fire onChange for every move.
   const valueRef = React.useRef(value);
   valueRef.current = value;
 
   // Segments wrap mid-word once per-segment width runs out. The track is
   // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
-  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char - so 2
   // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
   // back to a dropdown rather than wrap.
   const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
   const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
   const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
   if (!fitsAsSegments) {
-    // <select> emits strings — map back to the original option value so the
+    // <select> emits strings - map back to the original option value so the
     // fallback stays type-preserving (numbers, booleans) like the segment path.
     const resolve = (s) => {
       const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
@@ -2569,7 +2552,7 @@ function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) 
   );
 }
 
-// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// Relative-luminance contrast pick - checkmarks drawn over a swatch need to
 // read on both #111 and #fafafa without per-option configuration. Hex input
 // only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
 function __twkIsLight(hex) {
@@ -2589,8 +2572,8 @@ const __TwkCheck = ({ light }) => (
   </svg>
 );
 
-// TweakColor — curated color/palette picker. Each option is either a single
-// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// TweakColor - curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts - a lone color
 // renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
 // rest stacked in a sharp column on the right. onChange emits the
 // option in the shape it was passed (string stays string, array stays array).
@@ -2650,11 +2633,10 @@ Object.assign(window, {
   TweakSlider, TweakToggle, TweakRadio, TweakSelect,
   TweakText, TweakNumber, TweakColor, TweakButton,
 });
-
 </script>
 <script type="text/babel" data-presets="react">
 /* === site/Tweaks.jsx (inbakat) === */
-// Tweaks — a large, playful control surface that reshapes the whole page.
+// Tweaks - a large, playful control surface that reshapes the whole page.
 // Everything is applied non-destructively: CSS-variable overrides + extra rules
 // are written into a single <style id="tweak-overrides"> block, a parallax
 // multiplier global is set, and optional sections are shown/hidden. The section
@@ -2930,7 +2912,6 @@ function Tweaks() {
   );
 }
 window.Tweaks = Tweaks;
-
 </script>
 
 <script type="text/babel" data-presets="react">

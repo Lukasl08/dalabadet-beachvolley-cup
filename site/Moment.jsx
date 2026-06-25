@@ -1,4 +1,4 @@
-// Moment — the emotional centrepiece. A full-bleed photograph with a slow
+// Moment - the emotional centrepiece. A full-bleed photograph with a slow
 // parallax + Ken Burns drift and a dark scrim, big aspirational copy and a CTA.
 // This is the "you don't want to miss this" beat of the page.
 function Moment({ onRegister }) {
@@ -18,7 +18,7 @@ function Moment({ onRegister }) {
           <p style={{ color: 'rgba(251,248,241,0.92)', fontSize: 'var(--fs-lead)', maxWidth: '44ch', marginTop: '1em', textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}>
             Barfota i varm sand, havet som glittrar, bollen i luften och gänget
             som hejar. Det här är dagen alla snackar om långt efter att solen
-            gått ner. Var med från start — kliv i sanden och spela.
+            gått ner. Var med från start. Kliv i sanden och spela.
           </p>
           <div style={{ display: 'flex', gap: '12px', marginTop: '1.6em', flexWrap: 'wrap' }}>
             <Button variant="primary" size="lg" onClick={onRegister}>Säkra din plats</Button>

@@ -1,4 +1,4 @@
-// Gallery — "Bilder från sanden". A bento grid of real beach-volley photos with
+// Gallery - "Bilder från sanden". A bento grid of real beach-volley photos with
 // staggered reveal, hover zoom and a caption that rises on hover. Gives the page
 // a confident, editorial block of photography.
 function Gallery() {
@@ -21,14 +21,14 @@ function Gallery() {
           <div className="ds-eyebrow">Galleri</div>
           <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Bilder från sanden</h2>
           <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
-            Sol, hopp och full fart vid nätet — så här ser en dag på stranden ut.
+            Sol, hopp och full fart vid nätet. Så här ser en dag på stranden ut.
           </p>
         </div>
 
         <div className="gallery-grid">
           {shots.map((s, i) => (
             <figure key={i} className={`gcell reveal reveal-d${(i % 4) + 1} ${s.cls}`}>
-              <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley — ${s.label}`} loading="lazy" />
+              <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley ${s.label}`} loading="lazy" />
             </figure>
           ))}
         </div>

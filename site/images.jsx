@@ -1,6 +1,6 @@
-// images.jsx — shared real photography for the site.
+// images.jsx - shared real photography for the site.
 // Source: Pexels (free to use, no attribution required). Hand-picked casual
-// beach-volleyball scenes — warm sun, sand and sea, friends playing — chosen to
+// beach-volleyball scenes - warm sun, sand and sea, friends playing - chosen to
 // sit naturally on the sand+sea palette. No stadium crowds, no competition halls.
 // Each entry is a Pexels photo id; BV_IMG builds a width-optimised URL.
 window.BV_IMG = (id, w = 1200) =>

@@ -1,4 +1,4 @@
-// Marquee — a living strip of real beach-volley moments that scrolls forever
+// Marquee - a living strip of real beach-volley moments that scrolls forever
 // between the hero and the content. Adds energy and "something is happening",
 // while quietly previewing the photography to come. Pauses on hover.
 function Marquee() {

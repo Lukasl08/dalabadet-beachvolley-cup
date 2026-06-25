@@ -1,6 +1,6 @@
-// Footer — dark sea-deep base. Swappable text logo, page links matching the
+// Footer - dark sea-deep base. Swappable text logo, page links matching the
 // real sections, a contact placeholder and social placeholders.
-// Contact details + social accounts not set yet — swap when available.
+// Contact details + social accounts not set yet - swap when available.
 function Footer() {
   const linkStyle = {
     fontFamily: 'var(--font-body)', color: 'var(--text-on-dark-muted)',
@@ -29,7 +29,7 @@ function Footer() {
             <Logo onDark />
             <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-4)', maxWidth: '30ch' }}>
               En lokal beachvolleydag på Dalabadet i Trelleborg. Kom och spela,
-              häng och umgås — alla är välkomna.
+              häng och umgås, alla är välkomna.
             </p>
           </div>
 
