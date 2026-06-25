@@ -1,0 +1,27 @@
+/* Dalabadet Beachvolley Cup — Spacing & layout tokens
+   8px base rhythm. */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* Section vertical rhythm */
+  --section-pad-y: clamp(var(--space-8), 9vw, var(--space-10));
+
+  /* Content widths */
+  --maxw-prose:   62ch;
+  --maxw-content: 1120px;
+  --maxw-narrow:  720px;
+
+  /* Page gutter */
+  --gutter: clamp(var(--space-5), 5vw, var(--space-8));
+}

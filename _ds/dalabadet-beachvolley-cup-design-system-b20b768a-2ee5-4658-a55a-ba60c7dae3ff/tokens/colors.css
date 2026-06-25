@@ -1,0 +1,73 @@
+/* Dalabadet Beachvolley Cup — Color tokens
+   A muted Swedish-summer-beach palette: pale sand, dampened Baltic blue,
+   beach grass, and a single strong royal-blue (kungsblå) accent reserved for
+   the most important action (registration). */
+
+:root {
+  /* --- Base palette --- */
+  --sand:       #EFE3C4; /* page background, light surfaces */
+  --sand-deep:  #DCC79A; /* cards, dividers, secondary surfaces */
+  --sea:        #2E6F80; /* primary accent, headings */
+  --sea-deep:   #1B4750; /* dark text, footer / CTA backgrounds */
+  --dune:       #6E8B57; /* beach grass, secondary accent, palm detail */
+  --royal:      #2C4BD4; /* the ONLY strong color — kungsblå, CTA buttons, used sparingly */
+  --ink:        #26241F; /* body text */
+  --white:      #FBF8F1; /* cards, button text on dark ground */
+
+  /* --- Tints / states (derived, harmonious) --- */
+  --sea-soft:    #4D8593; /* sea hover / lighter sea */
+  --royal-deep:  #1E36A6; /* royal pressed / darker */
+  --danger:      #C0392B; /* form error / validation only */
+  --dune-soft:   #88A271; /* dune hover */
+  --sand-hair:   #C9B488; /* hairline borders on sand */
+  --ink-60:      rgba(38, 36, 31, 0.62); /* muted body text */
+  --white-70:    rgba(251, 248, 241, 0.72); /* muted text on dark */
+
+  /* --- Faded tint ramps ---
+     Each hue ships as a 3-step ramp toward the sand, lightest + most faded
+     first. Use for soft section washes, hover fills, badges and quiet panels.
+     tint-3 sits closest to the base color. */
+  --sea-tint-1:   #DCE6E8; /* @kind color */
+  --sea-tint-2:   #B6CCD1; /* @kind color */
+  --sea-tint-3:   #8FB0B7; /* @kind color */
+
+  --dune-tint-1:  #E4E9DC; /* @kind color */
+  --dune-tint-2:  #C8D3BA; /* @kind color */
+  --dune-tint-3:  #A6B893; /* @kind color */
+
+  --royal-tint-1: #DEE2F7; /* @kind color */
+  --royal-tint-2: #BAC3EF; /* @kind color */
+  --royal-tint-3: #8E9CE4; /* @kind color */
+
+  --sand-tint-1:  #FAF6EC; /* @kind color */
+  --sand-tint-2:  #F4ECD6; /* @kind color */
+  --sand-tint-3:  #E7D9B6; /* @kind color */
+
+  --ink-tint-1:   #BAB7AF; /* @kind color */
+  --ink-tint-2:   #8A8780; /* @kind color */
+  --ink-tint-3:   #57544D; /* @kind color */
+
+  --danger-tint-1:#F0D5D1; /* @kind color */
+  --danger-tint-2:#E0A89F; /* @kind color */
+  --danger-tint-3:#CF6E61; /* @kind color */
+
+  /* --- Semantic aliases --- */
+  --bg-page:        var(--sand);
+  --bg-raised:      var(--white);
+  --bg-sunk:        var(--sand-deep);
+  --bg-dark:        var(--sea-deep);
+
+  --text-heading:   var(--sea);
+  --text-body:      var(--ink);
+  --text-muted:     var(--ink-60);
+  --text-on-dark:   var(--white);
+  --text-on-dark-muted: var(--white-70);
+
+  --accent:         var(--sea);
+  --accent-grass:   var(--dune);
+  --action:         var(--royal);   /* primary CTA */
+  --action-hover:   var(--royal-deep);
+
+  --border-hair:    var(--sand-hair);
+  --border-on-dark: rgba(251, 248, 241, 0.18);
+}

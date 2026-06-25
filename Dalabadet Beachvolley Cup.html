@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dalabadet Beachvolley Cup</title>
+
+<link rel="stylesheet" href="_ds/dalabadet-beachvolley-cup-design-system-b20b768a-2ee5-4658-a55a-ba60c7dae3ff/styles.css">
+
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: var(--sand); overflow-x: hidden; }
+  ::selection { background: var(--royal); color: var(--white); }
+
+  .navlink { position: relative; transition: color .2s ease; }
+  .navlink::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: -2px; height: 2px;
+    background: var(--royal); transition: right .28s var(--ease-out);
+  }
+  .navlink:hover { color: var(--royal); }
+  .navlink:hover::after { right: 0; }
+
+  /* ---- Scroll reveal (content visible by default; only hides when motion is welcome) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+    .reveal-d3 { transition-delay: .24s; }
+    .reveal-d4 { transition-delay: .32s; }
+  }
+
+  /* ---- Signature ball-arc draw-in ---- */
+  .ball-arc { stroke-dashoffset: 0; }
+  .ball-dot { transform-box: fill-box; transform-origin: center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ready .ball-arc { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: arcDraw 1.9s var(--ease-out) .35s forwards; }
+    .ready .ball-dot { opacity: 0; animation: ballPop .55s var(--ease-out) 2.0s forwards; }
+    .ready .palm { opacity: 0; animation: palmFade 1.4s ease .7s forwards; }
+    .ready .hero-rise { opacity: 0; transform: translateY(34px); animation: heroRise 1s var(--ease-out) forwards; }
+    .ready .hero-rise.hr1 { animation-delay: .25s; }
+    .ready .hero-rise.hr2 { animation-delay: .42s; }
+    .ready .hero-rise.hr3 { animation-delay: .58s; }
+    .ready .hero-rise.hr4 { animation-delay: .74s; }
+  }
+  @keyframes arcDraw { to { stroke-dashoffset: 0; } }
+  @keyframes ballPop { 0% { opacity: 0; transform: scale(.2); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes palmFade { to { opacity: .5; } }
+  @keyframes heroRise { to { opacity: 1; transform: none; } }
+
+  /* ---- Ambient, very slow drift on decorative layers (gentle, gated) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .drift-slow { animation: drift 14s ease-in-out infinite alternate; }
+    .drift-slower { animation: drift 22s ease-in-out infinite alternate; }
+    .bob { animation: bob 7s ease-in-out infinite alternate; }
+  }
+  @keyframes drift { from { transform: translateX(-12px); } to { transform: translateX(12px); } }
+  @keyframes bob { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-18px) rotate(4deg); } }
+
+  /* ---- Scroll cue ---- */
+  .scrollcue { animation: cue 2.2s ease-in-out infinite; }
+  @keyframes cue { 0%,100% { transform: translateY(0); opacity: .9; } 50% { transform: translateY(7px); opacity: .45; } }
+  @media (prefers-reduced-motion: reduce) { .scrollcue { animation: none; } }
+
+  /* ---- Loading splash ---- */
+  #splash {
+    position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 26px;
+    background: var(--sand);
+    transition: opacity .7s ease, visibility .7s ease;
+  }
+  #splash.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+  .splash-word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    letter-spacing: -.02em; font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--sea-deep); line-height: .95; text-align: center; }
+  .splash-sub { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .28em;
+    font-size: .68rem; color: var(--royal); }
+  .splash-ball { width: 56px; height: 56px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .splash-ball circle.s-ball { transform-box: fill-box; transform-origin: center; animation: spin 1.4s linear infinite; }
+    .splash-track { stroke-dasharray: 150; stroke-dashoffset: 150; animation: arcDraw 1.2s var(--ease-out) forwards; }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---- FAQ accordion ---- */
+  .faq-item { border-bottom: 1px solid var(--sand-hair); }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: var(--space-5) 0; font-family: var(--font-display); text-transform: uppercase;
+    letter-spacing: -.01em; font-weight: 700; font-size: var(--fs-h3); color: var(--sea-deep); }
+  .faq-q:hover { color: var(--royal); }
+  .faq-icon { flex: none; width: 30px; height: 30px; border-radius: 999px; border: 1.5px solid var(--sand-hair);
+    display: grid; place-items: center; transition: transform .35s var(--ease-out), background .25s, border-color .25s; color: var(--sea); }
+  .faq-item[data-open="true"] .faq-icon { transform: rotate(45deg); background: var(--royal); border-color: var(--royal); color: var(--white); }
+  .faq-a { overflow: hidden; height: 0; transition: height .4s var(--ease-out); }
+  .faq-a-inner { padding: 0 0 var(--space-5); color: var(--text-body); max-width: 60ch; }
+
+  /* ---- Card hover lift (Why) ---- */
+  .lift { transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out); }
+  @media (prefers-reduced-motion: no-preference) {
+    .lift:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  }
+
+  .topfade { background: var(--sand); }
+
+  /* ---- Scroll progress bar ---- */
+  #scrollbar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--sea), var(--royal));
+    z-index: 300; transition: width .08s linear; pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) { #scrollbar { transition: none; } }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds/dalabadet-beachvolley-cup-design-system-b20b768a-2ee5-4658-a55a-ba60c7dae3ff/_ds_bundle.js"></script>
+<link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+</head>
+<body style="font-family: Inter">
+
+<div id="splash">
+  <svg class="splash-ball" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+    <path class="splash-track" d="M6 40 C 18 16, 38 12, 50 22" stroke="var(--sea-tint-3)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 8"/>
+    <circle class="s-ball" cx="28" cy="28" r="11" fill="none" stroke="var(--sea)" stroke-width="2.5"/>
+    <path class="s-ball-lines" d="M17 28 h22 M28 17 v22" stroke="var(--sea)" stroke-width="2" opacity="0"/>
+  </svg>
+  <div>
+    <div class="splash-word">Dalabadet</div>
+    <div class="splash-sub" style="text-align:center;margin-top:6px">Beachvolley Cup</div>
+  </div>
+</div>
+
+<div id="scrollbar"></div>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react" src="site/images.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Logo.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Nav.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Hero.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Marquee.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Why.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Stats.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Schedule.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Moment.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Prize.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Gallery.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Location.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Faq.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Follow.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Registration.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Footer.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/tweaks-panel.jsx"></script>
+<script type="text/babel" data-presets="react" src="site/Tweaks.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+  function App() {
+    const scrollToForm = React.useCallback(() => {
+      const el = document.getElementById('anmalan');
+      if (el) window.scrollTo({ top: el.offsetTop - 40, behavior: 'smooth' });
+    }, []);
+    return (
+      <React.Fragment>
+        <window.Nav onRegister={scrollToForm} />
+        <main>
+          <window.Hero onRegister={scrollToForm} />
+          <window.Marquee />
+          <window.Why />
+          <window.Stats />
+          <window.Schedule />
+          <window.Moment onRegister={scrollToForm} />
+          <window.Prize />
+          <window.Gallery />
+          <window.Location />
+          <window.Faq />
+          <window.Follow />
+          <window.Registration onRegister={scrollToForm} />
+        </main>
+        <window.Footer />
+        <window.Tweaks />
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+  // ---- Reveal on scroll ----
+  function wireReveals() {
+    const els = document.querySelectorAll('.reveal:not(.in)');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach((e) => io.observe(e));
+  }
+
+  // ---- Parallax (subtle) + scroll progress bar ----
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      document.querySelectorAll('[data-parallax]').forEach((el) => {
+        const sp = (parseFloat(el.getAttribute('data-parallax')) || 0) * (window.__parallaxMul ?? 1);
+        el.style.transform = `translate3d(0, ${y * sp}px, 0)`;
+      });
+      const bar = document.getElementById('scrollbar');
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+      }
+      ticking = false;
+    });
+  }
+
+  // Wire up after first paint of the React tree.
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      wireReveals();
+      // re-scan once more in case sections mounted late
+      setTimeout(wireReveals, 400);
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) window.addEventListener('scroll', onScroll, { passive: true });
+      document.body.classList.add('ready');
+    }, 60);
+  });
+
+  // ---- Splash dismiss ----
+  function dismissSplash() {
+    const s = document.getElementById('splash');
+    if (s) s.classList.add('gone');
+    setTimeout(() => { if (s) s.remove(); }, 800);
+  }
+  if (document.readyState === 'complete') setTimeout(dismissSplash, 700);
+  else window.addEventListener('load', () => setTimeout(dismissSplash, 600));
+  // hard fallback
+  setTimeout(dismissSplash, 2600);
+</script>
+</body>
+</html>

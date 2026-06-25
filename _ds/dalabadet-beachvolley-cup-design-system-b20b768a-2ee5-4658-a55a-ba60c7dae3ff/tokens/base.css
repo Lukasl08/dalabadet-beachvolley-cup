@@ -1,0 +1,83 @@
+/* Dalabadet Beachvolley Cup — Base element styles & helpers
+   Light reset + sensible defaults that map elements onto the tokens. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--space-4); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--sea); text-decoration: none; }
+a:hover { color: var(--sea-soft); }
+
+/* Numbers / times / results */
+.ds-mono,
+time, .ds-time, .ds-result {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--ls-mono);
+}
+
+/* Uppercase eyebrow / label */
+.ds-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--dune);
+}
+
+/* Layout helper */
+.ds-container {
+  width: 100%;
+  max-width: var(--maxw-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Button interaction states (the .ds-btn class is set by the Button component).
+   Press = sink 2px + scale 97% ("pressed into the sand"). */
+.ds-btn:not(:disabled):hover[data-variant="primary"]   { background: var(--action-hover); }
+.ds-btn:not(:disabled):hover[data-variant="secondary"]  { background: rgba(46,111,128,0.08); }
+.ds-btn:not(:disabled):hover[data-variant="ghost"]      { background: rgba(46,111,128,0.08); }
+.ds-btn:not(:disabled):active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: var(--shadow-press);
+}
+.ds-btn:focus-visible {
+  outline: 2px solid var(--sea);
+  outline-offset: 2px;
+}
+
+/* Form controls focus */
+.ds-input:focus {
+  border-color: var(--sea) !important;
+  box-shadow: 0 0 0 3px rgba(46,111,128,0.16);
+}
+.ds-input::placeholder { color: var(--ink-60); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
