@@ -1134,11 +1134,22 @@ function Hero({ onRegister }) {
         @keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.16); } }
 
         @media (max-width: 980px) { .hero-photos { display: none; } }
+
+        /* Sand shelf — a full-width beige fill that follows the lead text in flow,
+           so the paragraph always sits on sand, never on the blue sea, on every
+           viewport. A soft top fade reads as the natural beach waterline. */
+        .hero-lower { position: relative; margin-top: 2.7em; }
+        .hero-lower::before {
+          content: ""; position: absolute; z-index: -1; pointer-events: none;
+          left: 50%; transform: translateX(-50%);
+          width: 100vw; top: -2em; height: 300vh;
+          background: linear-gradient(to bottom, rgba(239,227,196,0) 0, #EFE3C4 2em, #EFE3C4 100%);
+        }
       `}</style>
 
-      {/* Grass tufts at the dune line */}
+      {/* Grass tufts at the dune line (above the sand shelf so they stay visible) */}
       <svg aria-hidden="true" viewBox="0 0 1200 200" preserveAspectRatio="none" style={{
-        position: 'absolute', left: 0, right: 0, bottom: 0, height: '160px', width: '100%', zIndex: 2,
+        position: 'absolute', left: 0, right: 0, bottom: 0, height: '160px', width: '100%', zIndex: 6,
       }}>
         <g stroke="#6E8B57" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.85">
           <path d="M60 200 V150 M70 200 V162 M50 200 V164 M80 200 V172"/>
@@ -1178,16 +1189,20 @@ function Hero({ onRegister }) {
           }}>Häng på stranden</span>
         </h1>
 
-        <p className="hero-rise hr3" style={{
-          fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
-          fontWeight: 500, maxWidth: '44ch', marginTop: '2.7em',
-        }}>Ta med kompisarna, kliv ner i sanden och spela boll en hel sommardag på
-          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning.
-          Alla är välkomna att vara med.</p>
+        {/* Lower group sits on a full-bleed "sand shelf" so the lead text never
+            starts on the blue sea band — on any viewport size or device. */}
+        <div className="hero-lower">
+          <p className="hero-rise hr3" style={{
+            fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
+            fontWeight: 500, maxWidth: '44ch', margin: 0,
+          }}>Ta med kompisarna, kliv ner i sanden och spela boll en hel sommardag på
+            Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning.
+            Alla är välkomna att vara med.</p>
 
-        <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
-          <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>
-          <Button as="a" href="#varfor" variant="secondary" size="lg">Läs mer</Button>
+          <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
+            <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>
+            <Button as="a" href="#varfor" variant="secondary" size="lg">Läs mer</Button>
+          </div>
         </div>
       </div>
 
