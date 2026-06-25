@@ -25,7 +25,7 @@ function Faq() {
   const items = [
     { q: 'Hur många spelare får vara i ett lag?', a: 'Varje lag är 4 spelare. Ange kontaktperson i anmälan, så löser vi resten på plats.' },
     { q: 'Behöver man vara erfaren?', a: 'Nej. Alla nivåer är välkomna och spelar i samma turnering, oavsett kön och vana. Vi hejar lika hårt på nybörjarna som på proffsen, det viktiga är att ha kul.' },
-    { q: 'Vad kostar det?', a: 'Anmälningsavgiften är ca 299 kr per lag. Ta med egen matsäck — dryck finns att köpa på stranden under dagen.' },
+    { q: 'Vad kostar det?', a: 'Anmälningsavgiften är 350 kr per lag. Ta med egen matsäck — dryck finns att köpa på stranden under dagen.' },
     { q: 'Vad ingår?', a: 'Spel hela dagen, plats i sanden, schema och en härlig dag vid havet. Finalen avslutas med prisutdelning där dagens mästare koras.' },
     { q: 'Hur anmäler man sig?', a: 'Fyll i anmälningsformuläret längre ner på sidan — lagnamn, kontaktperson, e-post, telefon och antal spelare (4 per lag). Ni får en bekräftelse, och vi hör av oss innan turneringen.' },
     { q: 'Finns det olika klasser?', a: 'Nej, inga klasser eller divisioner. Alla lag spelar tillsammans i samma turnering. Det finns heller ingen gräns för antal lag — alla som anmäler sig får plats.' },

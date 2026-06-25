@@ -5,8 +5,8 @@ function Moment({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   return (
     <section className="bv-moment" id="kanslan">
-      <div className="bv-moment-bg" data-parallax="0.14" aria-hidden="true"
-        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.menPlay, 1600)})` }}></div>
+      <div className="bv-moment-bg" data-parallax="0.05" aria-hidden="true"
+        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.dive, 1600)})` }}></div>
       <div className="bv-moment-scrim" aria-hidden="true"></div>
 
       <div className="ds-container bv-moment-inner">
@@ -32,17 +32,17 @@ function Moment({ onRegister }) {
         .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
         .bv-moment-bg {
           position: absolute; left: 0; right: 0; top: -12%; height: 124%;
-          background-size: cover; background-position: center 40%; z-index: 0; will-change: transform;
+          background-size: cover; background-position: center 35%; z-index: 0; will-change: transform;
         }
         @media (prefers-reduced-motion: no-preference) {
           .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }
         }
-        @keyframes momentKen { from { background-size: 112%; } to { background-size: 126%; } }
+        @keyframes momentKen { from { background-size: 102%; } to { background-size: 110%; } }
         .bv-moment-scrim {
           position: absolute; inset: 0; z-index: 1;
           background:
-            linear-gradient(180deg, rgba(27,71,80,0.25) 0%, rgba(27,71,80,0) 30%, rgba(27,71,80,0.15) 55%, rgba(27,71,80,0.78) 100%),
-            linear-gradient(90deg, rgba(27,71,80,0.55) 0%, rgba(27,71,80,0.1) 55%, rgba(27,71,80,0) 100%);
+            linear-gradient(180deg, rgba(27,71,80,0.20) 0%, rgba(27,71,80,0) 35%, rgba(27,71,80,0.10) 60%, rgba(27,71,80,0.62) 100%),
+            linear-gradient(90deg, rgba(27,71,80,0.62) 0%, rgba(27,71,80,0.12) 50%, rgba(27,71,80,0) 78%);
         }
         .bv-moment-inner { position: relative; z-index: 2; padding-top: var(--space-10); padding-bottom: var(--space-9); }
       `}</style>

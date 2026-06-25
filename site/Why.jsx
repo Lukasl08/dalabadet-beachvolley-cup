@@ -34,7 +34,6 @@ function Why() {
           {items.map((it, i) => (
             <article key={it.title} className={`why-item reveal reveal-d${(i % 4) + 1}`}>
               <div className="why-index">
-                <span className="why-num" style={{ color: it.tone }}>{String(i + 1).padStart(2, '0')}</span>
                 <span className="why-rule"></span>
               </div>
               <h3 className="why-title">

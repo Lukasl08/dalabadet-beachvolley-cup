@@ -29,7 +29,7 @@ function Location() {
             <div style={{ position: 'relative', width: '100%', aspectRatio: '520 / 380', background: 'var(--sea-tint-1)' }}>
               <iframe
                 title="Karta över Dalabadet, Trelleborg"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=13.1800%2C55.3655%2C13.2130%2C55.3800&layer=mapnik&marker=55.3727%2C13.1969"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=13.1900%2C55.3600%2C13.2200%2C55.3740&layer=mapnik&marker=55.3669%2C13.2047"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}

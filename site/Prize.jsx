@@ -16,8 +16,9 @@ function Prize() {
               <Badge tone="royal" style={{ background: 'rgba(44,75,212,0.22)', color: '#cdd5f7' }}>Att spela om</Badge>
               <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.45em 0 0.3em' }}>Dagens mästare</h2>
               <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
-                Vinnarlaget koras till Dagens mästare och tar emot priset under
-                prisutdelningen — plus äran och skryträtten ända till nästa sommar.
+                Vinnarlaget koras till Dagens mästare och tar emot priser värda
+                upp till 200 kr under prisutdelningen — plus äran och skryträtten
+                ända till nästa sommar.
               </p>
               <p style={{ color: 'var(--text-on-dark-muted)', maxWidth: '40ch' }}>
                 Men ärligt talat: efter en hel dag med boll, bad och sol går alla

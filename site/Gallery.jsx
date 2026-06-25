@@ -29,7 +29,6 @@ function Gallery() {
           {shots.map((s, i) => (
             <figure key={i} className={`gcell reveal reveal-d${(i % 4) + 1} ${s.cls}`}>
               <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley — ${s.label}`} loading="lazy" />
-              <figcaption><span>{s.label}</span></figcaption>
             </figure>
           ))}
         </div>

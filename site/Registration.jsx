@@ -59,13 +59,13 @@ function Registration({ onRegister }) {
           <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.7)' }}>Anmälan</div>
           <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.3em 0 0.35em' }}>Anmäl ditt lag</h2>
           <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
-            Anmälningsavgiften är ca 299 kr per lag och det går snabbt att anmäla
+            Anmälningsavgiften är 350 kr per lag och det går snabbt att anmäla
             sig. Anmäl er så snart som möjligt — sista anmälningsdag meddelas
             senare. Det finns ingen gräns för antal lag, så alla som vill får plats.
           </p>
 
           <ul style={{ listStyle: 'none', padding: 0, margin: 'var(--space-6) 0 0', display: 'grid', gap: 'var(--space-3)' }}>
-            {['Ca 299 kr per lag', 'Alla nivåer spelar tillsammans', '4 spelare per lag'].map((t) => (
+            {['350 kr per lag', 'Alla nivåer spelar tillsammans', '4 spelare per lag'].map((t) => (
               <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--white)', fontSize: 'var(--fs-body)' }}>
                 <span style={{
                   flex: 'none', width: '26px', height: '26px', borderRadius: '999px',
@@ -111,7 +111,7 @@ function Registration({ onRegister }) {
                 <Button type="submit" variant="primary" size="lg" fullWidth>Skicka anmälan</Button>
               </div>
               <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', color: 'var(--text-muted)', textAlign: 'center', margin: 0 }}>
-                299 kr/lag · Inga klasser · Alla välkomna
+                350 kr/lag · Inga klasser · Alla välkomna
               </p>
             </form>
           )}
