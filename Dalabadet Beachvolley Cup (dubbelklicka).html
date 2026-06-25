@@ -1,0 +1,3022 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dalabadet Beachvolley Cup</title>
+
+<style>
+/* === Designsystem (inbakat) === */
+/* Dalabadet Beachvolley Cup — Webfonts
+   All three families are available on Google Fonts, so no substitution was
+   needed against the brief.
+     - Bricolage Grotesque  → display / headings (uppercase, tight kerning)
+     - Inter                → body
+     - Spline Sans Mono     → numbers, times, results ("match-clock" feel) */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
+
+/* Dalabadet Beachvolley Cup — Color tokens
+   A muted Swedish-summer-beach palette: pale sand, dampened Baltic blue,
+   beach grass, and a single strong royal-blue (kungsblå) accent reserved for
+   the most important action (registration). */
+
+:root {
+  /* --- Base palette --- */
+  --sand:       #EFE3C4; /* page background, light surfaces */
+  --sand-deep:  #DCC79A; /* cards, dividers, secondary surfaces */
+  --sea:        #2E6F80; /* primary accent, headings */
+  --sea-deep:   #1B4750; /* dark text, footer / CTA backgrounds */
+  --dune:       #6E8B57; /* beach grass, secondary accent, palm detail */
+  --royal:      #2C4BD4; /* the ONLY strong color — kungsblå, CTA buttons, used sparingly */
+  --ink:        #26241F; /* body text */
+  --white:      #FBF8F1; /* cards, button text on dark ground */
+
+  /* --- Tints / states (derived, harmonious) --- */
+  --sea-soft:    #4D8593; /* sea hover / lighter sea */
+  --royal-deep:  #1E36A6; /* royal pressed / darker */
+  --danger:      #C0392B; /* form error / validation only */
+  --dune-soft:   #88A271; /* dune hover */
+  --sand-hair:   #C9B488; /* hairline borders on sand */
+  --ink-60:      rgba(38, 36, 31, 0.62); /* muted body text */
+  --white-70:    rgba(251, 248, 241, 0.72); /* muted text on dark */
+
+  /* --- Faded tint ramps ---
+     Each hue ships as a 3-step ramp toward the sand, lightest + most faded
+     first. Use for soft section washes, hover fills, badges and quiet panels.
+     tint-3 sits closest to the base color. */
+  --sea-tint-1:   #DCE6E8; /* @kind color */
+  --sea-tint-2:   #B6CCD1; /* @kind color */
+  --sea-tint-3:   #8FB0B7; /* @kind color */
+
+  --dune-tint-1:  #E4E9DC; /* @kind color */
+  --dune-tint-2:  #C8D3BA; /* @kind color */
+  --dune-tint-3:  #A6B893; /* @kind color */
+
+  --royal-tint-1: #DEE2F7; /* @kind color */
+  --royal-tint-2: #BAC3EF; /* @kind color */
+  --royal-tint-3: #8E9CE4; /* @kind color */
+
+  --sand-tint-1:  #FAF6EC; /* @kind color */
+  --sand-tint-2:  #F4ECD6; /* @kind color */
+  --sand-tint-3:  #E7D9B6; /* @kind color */
+
+  --ink-tint-1:   #BAB7AF; /* @kind color */
+  --ink-tint-2:   #8A8780; /* @kind color */
+  --ink-tint-3:   #57544D; /* @kind color */
+
+  --danger-tint-1:#F0D5D1; /* @kind color */
+  --danger-tint-2:#E0A89F; /* @kind color */
+  --danger-tint-3:#CF6E61; /* @kind color */
+
+  /* --- Semantic aliases --- */
+  --bg-page:        var(--sand);
+  --bg-raised:      var(--white);
+  --bg-sunk:        var(--sand-deep);
+  --bg-dark:        var(--sea-deep);
+
+  --text-heading:   var(--sea);
+  --text-body:      var(--ink);
+  --text-muted:     var(--ink-60);
+  --text-on-dark:   var(--white);
+  --text-on-dark-muted: var(--white-70);
+
+  --accent:         var(--sea);
+  --accent-grass:   var(--dune);
+  --action:         var(--royal);   /* primary CTA */
+  --action-hover:   var(--royal-deep);
+
+  --border-hair:    var(--sand-hair);
+  --border-on-dark: rgba(251, 248, 241, 0.18);
+}
+
+/* Dalabadet Beachvolley Cup — Typography tokens */
+
+:root {
+  /* --- Families --- */
+  --font-display: 'Bricolage Grotesque', 'Arial Narrow', sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'Spline Sans Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* --- Weights --- */
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semibold:600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+  --fw-black:   800; /* @kind font */
+
+  /* --- Type scale (fluid-ish, px) --- */
+  --fs-hero:    clamp(3rem, 8vw, 6.5rem); /* @kind font */
+  --fs-display: 3.25rem;  /* @kind font */
+  --fs-h1:      2.5rem;   /* @kind font */
+  --fs-h2:      1.875rem; /* @kind font */
+  --fs-h3:      1.375rem; /* @kind font */
+  --fs-lead:    1.25rem;  /* @kind font */
+  --fs-body:    1.0625rem;/* @kind font */
+  --fs-sm:      0.9375rem;/* @kind font */
+  --fs-xs:      0.8125rem;/* @kind font */
+
+  /* --- Line heights --- */
+  --lh-tight:   1.02; /* @kind font */
+  --lh-snug:    1.18; /* @kind font */
+  --lh-body:    1.6; /* @kind font */
+
+  /* --- Letter spacing --- */
+  --ls-display: -0.02em; /* @kind font */
+  --ls-label:   0.08em;  /* @kind font */
+  --ls-mono:    0.01em;  /* @kind font */
+
+  /* --- Semantic --- */
+  --text-display-spacing: var(--ls-display);
+}
+
+/* Base element defaults — opt-in by linking styles.css */
+:root {
+  --type-heading-transform: uppercase;
+}
+
+/* Dalabadet Beachvolley Cup — Spacing & layout tokens
+   8px base rhythm. */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* Section vertical rhythm */
+  --section-pad-y: clamp(var(--space-8), 9vw, var(--space-10));
+
+  /* Content widths */
+  --maxw-prose:   62ch;
+  --maxw-content: 1120px;
+  --maxw-narrow:  720px;
+
+  /* Page gutter */
+  --gutter: clamp(var(--space-5), 5vw, var(--space-8));
+}
+
+/* Dalabadet Beachvolley Cup — Effects: radii, borders, shadows, motion
+   Soft, low-contrast surfaces. Shadows are warm and gentle (sun on sand),
+   never the cold blue/black drop-shadows of generic web UI. */
+
+:root {
+  /* --- Corner radii --- */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   14px;  /* default cards, inputs */
+  --radius-lg:   22px;  /* feature panels */
+  --radius-pill: 999px; /* tags, chips */
+  /* Playful organic "beach-pebble" corner — used on buttons so they feel
+     hand-shaped rather than a plain pill. Gently asymmetric, all corners soft. */
+  --radius-pebble: 14px 22px 16px 26px / 26px 16px 24px 14px;
+
+  /* --- Borders --- */
+  --border-width: 1px; /* @kind other */
+  --border-card:  1px solid var(--border-hair); /* @kind other */
+
+  /* --- Shadows (warm, soft) --- */
+  --shadow-sm:  0 1px 2px rgba(38, 36, 31, 0.06);
+  --shadow-md:  0 6px 18px rgba(38, 36, 31, 0.10);
+  --shadow-lg:  0 18px 44px rgba(27, 71, 80, 0.16);
+  /* pressed-into-sand inset for active button */
+  --shadow-press: inset 0 2px 6px rgba(38, 36, 31, 0.22);
+
+  /* --- Motion --- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast:   140ms; /* @kind other */
+  --dur-base:   240ms; /* @kind other */
+  --dur-slow:   600ms; /* @kind other */
+}
+
+/* Dalabadet Beachvolley Cup — Base element styles & helpers
+   Light reset + sensible defaults that map elements onto the tokens. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  font-weight: var(--fw-bold);
+  margin: 0 0 var(--space-4);
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--space-4); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--sea); text-decoration: none; }
+a:hover { color: var(--sea-soft); }
+
+/* Numbers / times / results */
+.ds-mono,
+time, .ds-time, .ds-result {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--ls-mono);
+}
+
+/* Uppercase eyebrow / label */
+.ds-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--dune);
+}
+
+/* Layout helper */
+.ds-container {
+  width: 100%;
+  max-width: var(--maxw-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Button interaction states (the .ds-btn class is set by the Button component).
+   Press = sink 2px + scale 97% ("pressed into the sand"). */
+.ds-btn:not(:disabled):hover[data-variant="primary"]   { background: var(--action-hover); }
+.ds-btn:not(:disabled):hover[data-variant="secondary"]  { background: rgba(46,111,128,0.08); }
+.ds-btn:not(:disabled):hover[data-variant="ghost"]      { background: rgba(46,111,128,0.08); }
+.ds-btn:not(:disabled):active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: var(--shadow-press);
+}
+.ds-btn:focus-visible {
+  outline: 2px solid var(--sea);
+  outline-offset: 2px;
+}
+
+/* Form controls focus */
+.ds-input:focus {
+  border-color: var(--sea) !important;
+  box-shadow: 0 0 0 3px rgba(46,111,128,0.16);
+}
+.ds-input::placeholder { color: var(--ink-60); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+</style>
+
+<link rel="preconnect" href="https://images.pexels.com" crossorigin>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: var(--sand); overflow-x: hidden; }
+  ::selection { background: var(--royal); color: var(--white); }
+
+  .navlink { position: relative; transition: color .2s ease; }
+  .navlink::after {
+    content: ""; position: absolute; left: 0; right: 100%; bottom: -2px; height: 2px;
+    background: var(--royal); transition: right .28s var(--ease-out);
+  }
+  .navlink:hover { color: var(--royal); }
+  .navlink:hover::after { right: 0; }
+
+  /* ---- Scroll reveal (content visible by default; only hides when motion is welcome) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+    .reveal-d3 { transition-delay: .24s; }
+    .reveal-d4 { transition-delay: .32s; }
+  }
+
+  /* ---- Signature ball-arc draw-in ---- */
+  .ball-arc { stroke-dashoffset: 0; }
+  .ball-dot { transform-box: fill-box; transform-origin: center; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ready .ball-arc { stroke-dasharray: 1500; stroke-dashoffset: 1500; animation: arcDraw 1.9s var(--ease-out) .35s forwards; }
+    .ready .ball-dot { opacity: 0; animation: ballPop .55s var(--ease-out) 2.0s forwards; }
+    .ready .palm { opacity: 0; animation: palmFade 1.4s ease .7s forwards; }
+    .ready .hero-rise { opacity: 0; transform: translateY(34px); animation: heroRise 1s var(--ease-out) forwards; }
+    .ready .hero-rise.hr1 { animation-delay: .25s; }
+    .ready .hero-rise.hr2 { animation-delay: .42s; }
+    .ready .hero-rise.hr3 { animation-delay: .58s; }
+    .ready .hero-rise.hr4 { animation-delay: .74s; }
+  }
+  @keyframes arcDraw { to { stroke-dashoffset: 0; } }
+  @keyframes ballPop { 0% { opacity: 0; transform: scale(.2); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes palmFade { to { opacity: .5; } }
+  @keyframes heroRise { to { opacity: 1; transform: none; } }
+
+  /* ---- Ambient, very slow drift on decorative layers (gentle, gated) ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .drift-slow { animation: drift 14s ease-in-out infinite alternate; }
+    .drift-slower { animation: drift 22s ease-in-out infinite alternate; }
+    .bob { animation: bob 7s ease-in-out infinite alternate; }
+  }
+  @keyframes drift { from { transform: translateX(-12px); } to { transform: translateX(12px); } }
+  @keyframes bob { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-18px) rotate(4deg); } }
+
+  /* ---- Scroll cue ---- */
+  .scrollcue { animation: cue 2.2s ease-in-out infinite; }
+  @keyframes cue { 0%,100% { transform: translateY(0); opacity: .9; } 50% { transform: translateY(7px); opacity: .45; } }
+  @media (prefers-reduced-motion: reduce) { .scrollcue { animation: none; } }
+
+  /* ---- Loading splash ---- */
+  #splash {
+    position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 26px;
+    background: var(--sand);
+    transition: opacity .7s ease, visibility .7s ease;
+  }
+  #splash.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+  .splash-word { font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    letter-spacing: -.02em; font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--sea-deep); line-height: .95; text-align: center; }
+  .splash-sub { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .28em;
+    font-size: .68rem; color: var(--royal); }
+  .splash-ball { width: 56px; height: 56px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .splash-ball circle.s-ball { transform-box: fill-box; transform-origin: center; animation: spin 1.4s linear infinite; }
+    .splash-track { stroke-dasharray: 150; stroke-dashoffset: 150; animation: arcDraw 1.2s var(--ease-out) forwards; }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---- FAQ accordion ---- */
+  .faq-item { border-bottom: 1px solid var(--sand-hair); }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: var(--space-5) 0; font-family: var(--font-display); text-transform: uppercase;
+    letter-spacing: -.01em; font-weight: 700; font-size: var(--fs-h3); color: var(--sea-deep); }
+  .faq-q:hover { color: var(--royal); }
+  .faq-icon { flex: none; width: 30px; height: 30px; border-radius: 999px; border: 1.5px solid var(--sand-hair);
+    display: grid; place-items: center; transition: transform .35s var(--ease-out), background .25s, border-color .25s; color: var(--sea); }
+  .faq-item[data-open="true"] .faq-icon { transform: rotate(45deg); background: var(--royal); border-color: var(--royal); color: var(--white); }
+  .faq-a { overflow: hidden; height: 0; transition: height .4s var(--ease-out); }
+  .faq-a-inner { padding: 0 0 var(--space-5); color: var(--text-body); max-width: 60ch; }
+
+  /* ---- Card hover lift (Why) ---- */
+  .lift { transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out); }
+  @media (prefers-reduced-motion: no-preference) {
+    .lift:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  }
+
+  .topfade { background: var(--sand); }
+
+  /* ---- Scroll progress bar ---- */
+  #scrollbar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--sea), var(--royal));
+    z-index: 300; transition: width .08s linear; pointer-events: none;
+  }
+  @media (prefers-reduced-motion: reduce) { #scrollbar { transition: none; } }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>
+/* === Designsystem-komponenter (inbakat) === */
+/* @ds-bundle: {"format":3,"namespace":"DalabadetBeachvolleyCupDesignSystem_b20b76","components":[{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/core/Badge.jsx":"bc4880672418","components/core/Button.jsx":"97685bb75e7f","components/core/Card.jsx":"156369d63c51","components/forms/Input.jsx":"8731498ae79e","components/forms/Select.jsx":"fe5c54c1ca12","ui_kits/website/About.jsx":"87e5e8cd2819","ui_kits/website/Footer.jsx":"39eb439f117f","ui_kits/website/Hero.jsx":"8ba567511508","ui_kits/website/Location.jsx":"bfa17f1bc20d","ui_kits/website/Logo.jsx":"b322047b2b9b","ui_kits/website/Nav.jsx":"30939f4d9015","ui_kits/website/Registration.jsx":"5ecf4fd726bb","ui_kits/website/Schedule.jsx":"1400c172004d","ui_kits/website/Wave.jsx":"5f90be0321b8"},"inlinedExternals":[],"unexposedExports":[]} */
+
+(() => {
+
+const __ds_ns = (window.DalabadetBeachvolleyCupDesignSystem_b20b76 = window.DalabadetBeachvolleyCupDesignSystem_b20b76 || {});
+
+const __ds_scope = {};
+
+(__ds_ns.__errors = __ds_ns.__errors || []);
+
+// components/core/Badge.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * Badge / Tag — a small mono-font pill for labels, status and meta
+ * (e.g. "GRATIS", "ALLA NIVÅER", a schedule time chip).
+ *
+ * tone: sea | grass | sand | dark | royal
+ * The royal tone is strong — use it only to flag the single key fact.
+ */
+function Badge({
+  tone = 'sea',
+  children,
+  style = {},
+  ...rest
+}) {
+  const tones = {
+    sea: {
+      background: 'rgba(46,111,128,0.12)',
+      color: 'var(--sea-deep)'
+    },
+    grass: {
+      background: 'rgba(110,139,87,0.16)',
+      color: '#48603a'
+    },
+    sand: {
+      background: 'var(--sand-deep)',
+      color: 'var(--ink)'
+    },
+    dark: {
+      background: 'var(--sea-deep)',
+      color: 'var(--white)'
+    },
+    royal: {
+      background: 'rgba(44,75,212,0.12)',
+      color: 'var(--royal)'
+    }
+  };
+  return /*#__PURE__*/React.createElement("span", _extends({
+    style: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '0.4em',
+      fontFamily: 'var(--font-mono)',
+      fontSize: 'var(--fs-xs)',
+      fontWeight: 'var(--fw-medium)',
+      textTransform: 'uppercase',
+      letterSpacing: 'var(--ls-label)',
+      padding: '0.34em 0.8em',
+      borderRadius: 'var(--radius-pill)',
+      ...tones[tone],
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { Badge });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Badge.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Button.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  useRef,
+  useCallback
+} = React;
+/**
+ * Button — the brand's primary action element.
+ *
+ * Three variants:
+ *   primary   → royal blue (kungsblå), the single strong color; reserve for the most
+ *               important action on a view (e.g. "Anmäl ditt lag").
+ *   secondary → outlined sea-blue on transparent ground.
+ *   ghost     → transparent, for nav links and low-emphasis actions.
+ *
+ * Press behaviour (the brand signature), automatic on every Button:
+ *   1. The button sinks ~2px and scales to 97% — pressed into the sand.
+ *   2. A round sun-glint (radial white gradient) is born exactly where the
+ *      pointer landed, grows and fades over ~0.6s — a glint of sun on water.
+ * Both respect prefers-reduced-motion (the ripple is skipped).
+ */
+function Button({
+  variant = 'primary',
+  size = 'md',
+  as = 'button',
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  children,
+  style = {},
+  ...rest
+}) {
+  const ref = useRef(null);
+  const spawnGlint = useCallback(e => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = el.getBoundingClientRect();
+    const cx = (e.clientX ?? rect.left + rect.width / 2) - rect.left;
+    const cy = (e.clientY ?? rect.top + rect.height / 2) - rect.top;
+    const reach = Math.max(rect.width, rect.height) * 1.4;
+    const glint = document.createElement('span');
+    glint.style.cssText = ['position:absolute', `left:${cx}px`, `top:${cy}px`, `width:${reach}px`, `height:${reach}px`, 'margin-left:' + -reach / 2 + 'px', 'margin-top:' + -reach / 2 + 'px', 'border-radius:999px', 'pointer-events:none', 'background:radial-gradient(circle, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.22) 38%, rgba(255,255,255,0) 70%)', 'transform:scale(0)', 'opacity:0.9', 'transition:transform 600ms cubic-bezier(0.22,1,0.36,1), opacity 600ms ease-out'].join(';');
+    el.appendChild(glint);
+    requestAnimationFrame(() => {
+      glint.style.transform = 'scale(1)';
+      glint.style.opacity = '0';
+    });
+    setTimeout(() => glint.remove(), 640);
+  }, []);
+  const base = {
+    position: 'relative',
+    overflow: 'hidden',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.6em',
+    width: fullWidth ? '100%' : 'auto',
+    fontFamily: 'var(--font-display)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.04em',
+    fontWeight: 'var(--fw-bold)',
+    border: '1.5px solid transparent',
+    borderRadius: 'var(--radius-pebble)',
+    cursor: disabled ? 'not-allowed' : 'pointer',
+    opacity: disabled ? 0.5 : 1,
+    userSelect: 'none',
+    textDecoration: 'none',
+    transition: 'transform var(--dur-fast) var(--ease-out), background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)',
+    WebkitTapHighlightColor: 'transparent'
+  };
+  const sizes = {
+    sm: {
+      fontSize: '0.8125rem',
+      padding: '0.5em 1.1em'
+    },
+    md: {
+      fontSize: '0.95rem',
+      padding: '0.72em 1.5em'
+    },
+    lg: {
+      fontSize: '1.0625rem',
+      padding: '0.92em 2em'
+    }
+  };
+  const variants = {
+    primary: {
+      background: 'var(--action)',
+      color: 'var(--white)',
+      boxShadow: 'var(--shadow-md)'
+    },
+    secondary: {
+      background: 'transparent',
+      color: 'var(--sea)',
+      borderColor: 'var(--sea)'
+    },
+    ghost: {
+      background: 'transparent',
+      color: 'var(--sea-deep)'
+    }
+  };
+  const Tag = as;
+  return /*#__PURE__*/React.createElement(Tag, _extends({
+    ref: ref,
+    type: as === 'button' ? type : undefined,
+    disabled: as === 'button' ? disabled : undefined,
+    onPointerDown: disabled ? undefined : spawnGlint,
+    "data-variant": variant,
+    className: "ds-btn",
+    style: {
+      ...base,
+      ...sizes[size],
+      ...variants[variant],
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { Button });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Button.jsx", error: String((e && e.message) || e) }); }
+
+// components/core/Card.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+/**
+ * Card — soft, warm surface used for info blocks (Klasser / Regler / Pris),
+ * schedule panels, the registration form, etc.
+ *
+ * tone:
+ *   raised → white card on sand with a hairline + soft warm shadow (default)
+ *   sunk   → sand-deep card, no shadow, for nested/secondary panels
+ *   dark   → sea-deep ground with light text, for CTA / footer blocks
+ */
+function Card({
+  tone = 'raised',
+  as = 'div',
+  padding = 'md',
+  children,
+  style = {},
+  ...rest
+}) {
+  const tones = {
+    raised: {
+      background: 'var(--bg-raised)',
+      color: 'var(--text-body)',
+      border: 'var(--border-card)',
+      boxShadow: 'var(--shadow-md)'
+    },
+    sunk: {
+      background: 'var(--bg-sunk)',
+      color: 'var(--text-body)',
+      border: '1px solid var(--sand-hair)'
+    },
+    dark: {
+      background: 'var(--bg-dark)',
+      color: 'var(--text-on-dark)',
+      border: '1px solid var(--border-on-dark)'
+    }
+  };
+  const pads = {
+    none: 0,
+    sm: 'var(--space-5)',
+    md: 'var(--space-6)',
+    lg: 'var(--space-7)'
+  };
+  const Tag = as;
+  return /*#__PURE__*/React.createElement(Tag, _extends({
+    style: {
+      borderRadius: 'var(--radius-lg)',
+      padding: pads[padding],
+      ...tones[tone],
+      ...style
+    }
+  }, rest), children);
+}
+Object.assign(__ds_scope, { Card });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/core/Card.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Input.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  useId
+} = React;
+const fieldWrap = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'var(--space-2)',
+  width: '100%'
+};
+const labelStyle = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: 'var(--fs-xs)',
+  textTransform: 'uppercase',
+  letterSpacing: 'var(--ls-label)',
+  fontWeight: 'var(--fw-medium)',
+  color: 'var(--sea-deep)'
+};
+const controlBase = {
+  width: '100%',
+  fontFamily: 'var(--font-body)',
+  fontSize: 'var(--fs-body)',
+  color: 'var(--ink)',
+  background: 'var(--white)',
+  border: '1.5px solid var(--sand-hair)',
+  borderRadius: 'var(--radius-md)',
+  padding: '0.7em 0.9em',
+  outline: 'none',
+  transition: 'border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)'
+};
+
+/**
+ * Input — labelled text/email/tel/number field used in the registration form.
+ * Numeric inputs render in the mono font to match the "match-clock" numerals.
+ */
+function Input({
+  label,
+  type = 'text',
+  hint,
+  error,
+  id,
+  style = {},
+  ...rest
+}) {
+  const autoId = useId();
+  const fieldId = id || autoId;
+  const isNum = type === 'number';
+  return /*#__PURE__*/React.createElement("div", {
+    style: fieldWrap
+  }, label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: fieldId,
+    style: labelStyle
+  }, label), /*#__PURE__*/React.createElement("input", _extends({
+    id: fieldId,
+    type: type,
+    className: "ds-input",
+    "aria-invalid": error ? 'true' : undefined,
+    style: {
+      ...controlBase,
+      fontFamily: isNum ? 'var(--font-mono)' : 'var(--font-body)',
+      borderColor: error ? 'var(--danger)' : 'var(--sand-hair)',
+      ...style
+    }
+  }, rest)), error ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 'var(--fs-xs)',
+      color: 'var(--danger)'
+    }
+  }, error) : hint ? /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 'var(--fs-xs)',
+      color: 'var(--text-muted)'
+    }
+  }, hint) : null);
+}
+Object.assign(__ds_scope, { Input });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Input.jsx", error: String((e && e.message) || e) }); }
+
+// components/forms/Select.jsx
+try { (() => {
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
+const {
+  useId
+} = React;
+const wrap = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'var(--space-2)',
+  width: '100%'
+};
+const labelStyle = {
+  fontFamily: 'var(--font-mono)',
+  fontSize: 'var(--fs-xs)',
+  textTransform: 'uppercase',
+  letterSpacing: 'var(--ls-label)',
+  fontWeight: 'var(--fw-medium)',
+  color: 'var(--sea-deep)'
+};
+
+/**
+ * Select — labelled dropdown (e.g. "Antal spelare" 2–6). Caret drawn with an
+ * inline SVG background so it matches the sea-blue palette.
+ */
+function Select({
+  label,
+  options = [],
+  id,
+  style = {},
+  children,
+  ...rest
+}) {
+  const autoId = useId();
+  const fieldId = id || autoId;
+  const caret = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231B4750' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>";
+  return /*#__PURE__*/React.createElement("div", {
+    style: wrap
+  }, label && /*#__PURE__*/React.createElement("label", {
+    htmlFor: fieldId,
+    style: labelStyle
+  }, label), /*#__PURE__*/React.createElement("select", _extends({
+    id: fieldId,
+    className: "ds-input",
+    style: {
+      width: '100%',
+      appearance: 'none',
+      WebkitAppearance: 'none',
+      fontFamily: 'var(--font-mono)',
+      fontSize: 'var(--fs-body)',
+      color: 'var(--ink)',
+      background: `var(--white) url("${caret}") no-repeat right 0.9em center`,
+      border: '1.5px solid var(--sand-hair)',
+      borderRadius: 'var(--radius-md)',
+      padding: '0.7em 2.4em 0.7em 0.9em',
+      outline: 'none',
+      cursor: 'pointer',
+      transition: 'border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)',
+      ...style
+    }
+  }, rest), children || options.map(o => {
+    const value = typeof o === 'object' ? o.value : o;
+    const labelText = typeof o === 'object' ? o.label : o;
+    return /*#__PURE__*/React.createElement("option", {
+      key: value,
+      value: value
+    }, labelText);
+  })));
+}
+Object.assign(__ds_scope, { Select });
+})(); } catch (e) { __ds_ns.__errors.push({ path: "components/forms/Select.jsx", error: String((e && e.message) || e) }); }
+
+__ds_ns.Badge = __ds_scope.Badge;
+
+__ds_ns.Button = __ds_scope.Button;
+
+__ds_ns.Card = __ds_scope.Card;
+
+__ds_ns.Input = __ds_scope.Input;
+
+__ds_ns.Select = __ds_scope.Select;
+
+})();
+
+</script>
+<link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+</head>
+<body style="font-family: Inter">
+
+<div id="splash">
+  <svg class="splash-ball" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+    <path class="splash-track" d="M6 40 C 18 16, 38 12, 50 22" stroke="var(--sea-tint-3)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 8"/>
+    <circle class="s-ball" cx="28" cy="28" r="11" fill="none" stroke="var(--sea)" stroke-width="2.5"/>
+    <path class="s-ball-lines" d="M17 28 h22 M28 17 v22" stroke="var(--sea)" stroke-width="2" opacity="0"/>
+  </svg>
+  <div>
+    <div class="splash-word">Dalabadet</div>
+    <div class="splash-sub" style="text-align:center;margin-top:6px">Beachvolley Cup</div>
+  </div>
+</div>
+
+<div id="scrollbar"></div>
+<div id="root"></div>
+
+<script type="text/babel" data-presets="react">
+/* === site/images.jsx (inbakat) === */
+// images.jsx — shared real photography for the site.
+// Source: Pexels (free to use, no attribution required). Hand-picked casual
+// beach-volleyball scenes — warm sun, sand and sea, friends playing — chosen to
+// sit naturally on the sand+sea palette. No stadium crowds, no competition halls.
+// Each entry is a Pexels photo id; BV_IMG builds a width-optimised URL.
+window.BV_IMG = (id, w = 1200) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+
+window.BV_PHOTOS = {
+  heroAction: 6180426, // hit against a clear blue sky
+  ballClose:  16069805, // colourful ball resting in the sand
+  friends:    6180430, // four friends smiling by the net
+  dive:       12169045, // diving save, sunny beach court
+  serve:      6180404, // serve, sunglasses, blue sky
+  jump:       27965328, // jump at the net
+  menPlay:    6180392, // rally under a clear sky
+  womanSky:   6180386, // player under blue sky
+  lifestyle:  12169357, // walking off with the ball
+  netReady:   6180409, // ready at the net
+  duo:        12169213, // two players, sandy court
+  coupleBall: 12169190, // playful fight for the ball
+};
+
+// Warm the cache for the shots that appear early so the page feels instant.
+[window.BV_PHOTOS.dive, window.BV_PHOTOS.friends, window.BV_PHOTOS.heroAction, window.BV_PHOTOS.jump]
+  .forEach((id) => { const i = new Image(); i.src = window.BV_IMG(id, 900); });
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Logo.jsx (inbakat) === */
+// Logo — text-based placeholder logo in the display font, no icon/mark.
+// Built as its own component so it can be swapped for an image file later.
+function Logo({ onDark = false, compact = false }) {
+  const color = onDark ? 'var(--white)' : 'var(--sea-deep)';
+  return (
+    <a href="#top" aria-label="Dalabadet Beachvolley Cup" style={{
+      display: 'inline-flex', flexDirection: 'column', lineHeight: 0.92,
+      textDecoration: 'none', letterSpacing: '-0.02em',
+    }}>
+      {/* TODO: byt ut mot en bildfil (logo.svg/png) när loggan finns */}
+      <span style={{
+        fontFamily: 'var(--font-display)', fontWeight: 800, textTransform: 'uppercase',
+        fontSize: compact ? '1.05rem' : '1.2rem', color,
+      }}>Dalabadet</span>
+      <span style={{
+        fontFamily: 'var(--font-mono)', fontWeight: 500, textTransform: 'uppercase',
+        letterSpacing: '0.22em', fontSize: compact ? '0.56rem' : '0.62rem',
+        color: 'var(--royal)', marginTop: '3px',
+      }}>Beachvolley Cup</span>
+    </a>
+  );
+}
+window.Logo = Logo;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Nav.jsx (inbakat) === */
+// Nav — sticky, frosts on scroll. Section links + the single primary action.
+// Adds a calm mobile menu (sheet) since the page is now long.
+function Nav({ onRegister }) {
+  const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+  const [scrolled, setScrolled] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const links = [
+    { href: '#varfor', label: 'Varför' },
+    { href: '#schema', label: 'Schema' },
+    { href: '#plats', label: 'Plats' },
+    { href: '#fragor', label: 'Frågor' },
+  ];
+
+  const link = {
+    fontFamily: 'var(--font-display)', textTransform: 'uppercase',
+    fontWeight: 700, letterSpacing: '0.02em', fontSize: '0.9rem',
+    color: 'var(--sea-deep)', textDecoration: 'none', padding: '0.4em 0.2em',
+  };
+
+  const go = (href) => (e) => {
+    e.preventDefault();
+    setOpen(false);
+    const el = document.querySelector(href);
+    if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+  };
+
+  return (
+    <header style={{
+      position: 'sticky', top: 0, zIndex: 100,
+      background: scrolled ? 'rgba(251,248,241,0.82)' : 'transparent',
+      backdropFilter: scrolled ? 'saturate(150%) blur(12px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'saturate(150%) blur(12px)' : 'none',
+      borderBottom: scrolled ? '1px solid var(--sand-hair)' : '1px solid transparent',
+      transition: 'background .35s ease, border-color .35s ease',
+    }}>
+      <nav className="ds-container" style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        height: '74px', gap: '24px',
+      }}>
+        <Logo />
+
+        <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={go(l.href)} style={link} className="navlink">{l.label}</a>
+          ))}
+          <Button variant="primary" size="sm" onClick={onRegister}>Anmäl ditt lag</Button>
+        </div>
+
+        <button className="nav-burger" aria-label="Meny" onClick={() => setOpen((o) => !o)} style={{
+          display: 'none', background: 'none', border: 'none', cursor: 'pointer',
+          width: '44px', height: '44px', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--sea-deep)" strokeWidth="2.2" strokeLinecap="round">
+            {open
+              ? <g><path d="M5 5l14 14"/><path d="M19 5L5 19"/></g>
+              : <g><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></g>}
+          </svg>
+        </button>
+      </nav>
+
+      {/* Mobile sheet */}
+      <div className="nav-sheet" style={{
+        display: 'none', overflow: 'hidden',
+        maxHeight: open ? '340px' : '0px',
+        transition: 'max-height .4s var(--ease-out)',
+        background: 'rgba(251,248,241,0.97)',
+        backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: open ? '1px solid var(--sand-hair)' : 'none',
+      }}>
+        <div className="ds-container" style={{ display: 'flex', flexDirection: 'column', gap: '4px', padding: '14px 0 22px' }}>
+          {links.map((l) => (
+            <a key={l.href} href={l.href} onClick={go(l.href)} style={{ ...link, fontSize: '1.1rem', padding: '0.7em 0' }}>{l.label}</a>
+          ))}
+          <div style={{ marginTop: '10px' }}>
+            <Button variant="primary" size="md" fullWidth onClick={() => { setOpen(false); onRegister(); }}>Anmäl ditt lag</Button>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 720px) {
+          .nav-desktop { display: none !important; }
+          .nav-burger { display: inline-flex !important; }
+          .nav-sheet { display: block !important; }
+        }
+      `}</style>
+    </header>
+  );
+}
+window.Nav = Nav;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Hero.jsx (inbakat) === */
+// Hero — the showpiece. A layered, illustrative Swedish-summer-beach scene
+// (sky, soft sun, sea bands, sand, grass) with gentle parallax + the signature
+// ball-arc that draws itself once on load. No photos — graphic per the brief.
+function Hero({ onRegister }) {
+  const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+
+  return (
+    <section id="top" style={{
+      position: 'relative', overflow: 'hidden', minHeight: '100vh',
+      display: 'flex', alignItems: 'center',
+    }}>
+      {/* Sky */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', inset: 0, zIndex: 0,
+        background: 'linear-gradient(180deg, #bfe0e6 0%, #cfe6e3 22%, #a9cdd2 40%, #6fa0ab 49.6%, #4d8593 50%, #3a7b8a 56%, #EFE3C4 56.3%, #EFE3C4 100%)',
+      }}></div>
+
+      {/* Soft sun */}
+      <div aria-hidden="true" data-parallax="0.10" className="drift-slower" style={{
+        position: 'absolute', top: '13%', right: '14%', width: 'clamp(120px,16vw,220px)', height: 'clamp(120px,16vw,220px)',
+        borderRadius: '999px', zIndex: 1,
+        background: 'radial-gradient(circle, rgba(251,248,241,0.95) 0%, rgba(251,248,241,0.78) 38%, rgba(251,248,241,0.18) 66%, rgba(251,248,241,0) 75%)',
+      }}></div>
+
+      {/* Distant clouds */}
+      <div aria-hidden="true" data-parallax="0.05" className="drift-slow" style={{
+        position: 'absolute', top: '20%', left: '8%', zIndex: 1, opacity: 0.5,
+      }}>
+        <svg width="220" height="56" viewBox="0 0 220 56" fill="rgba(251,248,241,0.85)">
+          <path d="M10 40 q6 -22 30 -20 q8 -18 32 -10 q20 -10 30 8 q22 -2 18 22 z"/>
+          <ellipse cx="150" cy="34" rx="46" ry="13"/>
+        </svg>
+      </div>
+
+      {/* Sea wave bands sitting just under the horizon */}
+      <svg aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 1,
+      }}>
+        <g stroke="rgba(251,248,241,0.5)" strokeWidth="2" fill="none" strokeLinecap="round">
+          <path className="drift-slow" d="M0 300 q120 -10 240 0 t240 0 t240 0 t240 0 t240 0" />
+          <path className="drift-slower" d="M-40 322 q120 10 240 0 t240 0 t240 0 t240 0 t240 0" opacity="0.7" />
+          <path className="drift-slow" d="M0 344 q120 -8 240 0 t240 0 t240 0 t240 0 t240 0" opacity="0.5" />
+        </g>
+      </svg>
+
+      {/* Thin horizon line */}
+      <div aria-hidden="true" style={{
+        position: 'absolute', left: 0, right: 0, top: '50%', height: '1px',
+        background: 'rgba(27,71,80,0.28)', zIndex: 1,
+      }}></div>
+
+      {/* Signature ball-arc + ball + sparse palm */}
+      <svg aria-hidden="true" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 2,
+      }}>
+        <path className="ball-arc" d="M 70 580 C 360 250, 720 110, 1140 240"
+          fill="none" stroke="rgba(251,248,241,0.72)" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="6 12" />
+        <g className="palm" transform="translate(1015 352)" fill="none" stroke="#5a7548" strokeWidth="4" strokeLinecap="round" opacity="0.5">
+          <path d="M 60 0 C 56 -40, 52 -80, 54 -120" />
+          <path d="M 54 -120 C 30 -150, 0 -156, -26 -150" />
+          <path d="M 54 -120 C 78 -152, 110 -158, 138 -150" />
+          <path d="M 54 -120 C 36 -160, 28 -196, 34 -224" />
+          <path d="M 54 -120 C 72 -160, 92 -188, 112 -206" />
+          <path d="M 54 -120 C 40 -150, 18 -176, -8 -188" />
+        </g>
+      </svg>
+
+      {/* Floating beach-volleyball */}
+      <div aria-hidden="true" className="bob" data-parallax="-0.06" style={{
+        position: 'absolute', top: '30%', left: '11%', zIndex: 2, width: 'clamp(54px,7vw,92px)', height: 'clamp(54px,7vw,92px)',
+        filter: 'drop-shadow(0 10px 18px rgba(27,71,80,0.22))',
+      }}>
+        <svg viewBox="0 0 100 100" width="100%" height="100%">
+          <circle cx="50" cy="50" r="46" fill="#FBF8F1" stroke="rgba(27,71,80,0.18)" strokeWidth="2"/>
+          <path d="M50 4 C 30 30, 30 70, 50 96" fill="none" stroke="#2E6F80" strokeWidth="3"/>
+          <path d="M50 4 C 70 30, 70 70, 50 96" fill="none" stroke="#2E6F80" strokeWidth="3"/>
+          <path d="M8 38 C 34 50, 66 50, 92 38" fill="none" stroke="#2C4BD4" strokeWidth="3"/>
+          <path d="M6 64 C 34 54, 66 54, 94 64" fill="none" stroke="#6E8B57" strokeWidth="3"/>
+        </svg>
+      </div>
+
+      {/* Real-photo cluster — floating, gently drifting beach-volley moments */}
+      <div className="hero-photos" aria-hidden="true">
+        <div className="hp-wrap hp-a" data-parallax="-0.05">
+          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.dive, 700)} alt="" loading="eager" /></figure>
+        </div>
+        <div className="hp-wrap hp-b" data-parallax="0.07">
+          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.friends, 700)} alt="" loading="eager" /></figure>
+        </div>
+        <div className="hp-wrap hp-c" data-parallax="-0.1">
+          <figure className="hero-photo hero-photo--round">
+            <img src={window.BV_IMG(window.BV_PHOTOS.ballClose, 500)} alt="" loading="eager" />
+          </figure>
+        </div>
+      </div>
+
+      <style>{`
+        .hero-photos {
+          position: absolute; right: clamp(12px, 4vw, 70px); top: 0; bottom: 0;
+          width: min(46vw, 520px); z-index: 3; pointer-events: none;
+        }
+        .hp-wrap { position: absolute; will-change: transform; }
+        .hero-photo {
+          margin: 0; overflow: hidden; border-radius: 20px;
+          border: 6px solid var(--white); box-shadow: var(--shadow-lg);
+          background: var(--sea-tint-1);
+        }
+        .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .hero-photo--round { border-radius: 999px; }
+        .hp-a { width: 52%; top: 20%; right: 28%; }
+        .hp-a .hero-photo { aspect-ratio: 3 / 4; }
+        .hp-b { width: 47%; top: 50%; right: 1%; }
+        .hp-b .hero-photo { aspect-ratio: 4 / 5; }
+        .hp-c { width: 23%; top: 12%; right: 6%; }
+        .hp-c .hero-photo { aspect-ratio: 1 / 1; }
+
+        @media (prefers-reduced-motion: no-preference) {
+          .hp-a .hero-photo { animation: heroFloatA 6.5s ease-in-out infinite alternate; }
+          .hp-b .hero-photo { animation: heroFloatB 7.6s ease-in-out infinite alternate; }
+          .hp-c .hero-photo { animation: heroFloatC 5.4s ease-in-out infinite alternate; }
+          .hero-photo img { animation: heroKen 20s ease-in-out infinite alternate; }
+          .hp-b .hero-photo img { animation-duration: 24s; }
+        }
+        @keyframes heroFloatA { from { transform: rotate(-5deg) translateY(0); } to { transform: rotate(-5deg) translateY(-18px); } }
+        @keyframes heroFloatB { from { transform: rotate(4.5deg) translateY(0); } to { transform: rotate(4.5deg) translateY(-13px); } }
+        @keyframes heroFloatC { from { transform: rotate(-9deg) translateY(0); } to { transform: rotate(-9deg) translateY(10px); } }
+        @keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.16); } }
+
+        @media (max-width: 980px) { .hero-photos { display: none; } }
+      `}</style>
+
+      {/* Grass tufts at the dune line */}
+      <svg aria-hidden="true" viewBox="0 0 1200 200" preserveAspectRatio="none" style={{
+        position: 'absolute', left: 0, right: 0, bottom: 0, height: '160px', width: '100%', zIndex: 2,
+      }}>
+        <g stroke="#6E8B57" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.85">
+          <path d="M60 200 V150 M70 200 V162 M50 200 V164 M80 200 V172"/>
+          <path d="M150 200 V168 M160 200 V158 M170 200 V172"/>
+          <path d="M1120 200 V150 M1130 200 V160 M1110 200 V164 M1140 200 V170"/>
+          <path d="M1020 200 V170 M1030 200 V160 M1010 200 V172"/>
+        </g>
+      </svg>
+
+      {/* Content */}
+      <div className="ds-container" style={{ position: 'relative', zIndex: 5, paddingTop: '88px', paddingBottom: '40px' }}>
+        <div className="hero-rise hr1" style={{
+          display: 'inline-flex', gap: '10px', alignItems: 'center',
+          fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.12em',
+          fontSize: '0.78rem', fontWeight: 500, color: 'var(--white)',
+          background: 'rgba(27,71,80,0.36)', padding: '0.55em 1.05em', borderRadius: '999px',
+          backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)',
+        }}>
+          <span style={{ width: '7px', height: '7px', borderRadius: '999px', background: 'var(--royal)', boxShadow: '0 0 0 4px rgba(44,75,212,0.25)' }}></span>
+          Datum meddelas snart · Dalabadet, Trelleborg
+        </div>
+
+        <h1 className="hero-rise hr2" style={{
+          fontSize: 'var(--fs-hero)', color: 'var(--white)', margin: '0.26em 0 0',
+          lineHeight: 0.88, letterSpacing: '-0.025em', maxWidth: '16ch',
+          textShadow: '2px 2px 0 rgba(27,71,80,0.30), 5px 8px 26px rgba(27,71,80,0.32)',
+        }}>
+          <span style={{ display: 'block', fontSize: '0.46em', letterSpacing: '0.02em', color: 'rgba(251,248,241,0.95)' }}>Dalabadet</span>
+          <span style={{ display: 'block' }}>Beachvolley</span>
+          <span style={{ display: 'inline-block', transform: 'rotate(-2.5deg)', transformOrigin: 'left center' }}>Cup</span>
+          <span style={{
+            display: 'inline-block', verticalAlign: '0.6em', marginLeft: '0.45em',
+            transform: 'rotate(2deg)', fontFamily: 'var(--font-mono)', fontWeight: 600,
+            textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.15em',
+            color: 'var(--white)', background: 'var(--royal)', padding: '0.5em 0.95em',
+            borderRadius: '999px', textShadow: 'none', boxShadow: 'var(--shadow-md)',
+          }}>Häng på stranden</span>
+        </h1>
+
+        <p className="hero-rise hr3" style={{
+          fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
+          fontWeight: 500, maxWidth: '44ch', marginTop: '0.9em',
+        }}>Ta med kompisarna, kliv ner i sanden och spela boll en hel sommardag på
+          Dalabadet i Trelleborg. Sol, hav, glada matcher och härlig stämning —
+          alla är välkomna att vara med.</p>
+
+        <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
+          <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>
+          <Button as="a" href="#varfor" variant="secondary" size="lg">Läs mer</Button>
+        </div>
+      </div>
+
+      {/* Scroll cue */}
+      <a href="#varfor" aria-label="Scrolla ner" style={{
+        position: 'absolute', left: '50%', bottom: '26px', transform: 'translateX(-50%)',
+        zIndex: 5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '7px',
+        fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.16em',
+        fontSize: '0.64rem', color: 'var(--sea-deep)', textDecoration: 'none',
+      }}>
+        Scrolla
+        <svg className="scrollcue" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sea-deep)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </section>
+  );
+}
+window.Hero = Hero;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Marquee.jsx (inbakat) === */
+// Marquee — a living strip of real beach-volley moments that scrolls forever
+// between the hero and the content. Adds energy and "something is happening",
+// while quietly previewing the photography to come. Pauses on hover.
+function Marquee() {
+  const P = window.BV_PHOTOS;
+  const words = ['Sol', 'Sand', 'Smash', 'Gemenskap', 'Block', 'Hav', 'Serve', 'Sommar'];
+  const ids = [P.dive, P.serve, P.heroAction, P.menPlay, P.womanSky, P.lifestyle, P.netReady, P.duo];
+  const loop = [...ids, ...ids];
+  const wloop = [...words, ...words];
+
+  return (
+    <section className="bv-marquee" aria-hidden="true">
+      {/* word ticker */}
+      <div className="mq-words">
+        <div className="mq-words-track">
+          {wloop.map((w, i) => (
+            <span key={i} className="mq-word">{w}<span className="mq-dot">•</span></span>
+          ))}
+        </div>
+      </div>
+
+      {/* photo ticker */}
+      <div className="mq-photos">
+        <div className="mq-photos-track">
+          {loop.map((id, i) => (
+            <div className="mq-item" key={i}><img src={window.BV_IMG(id, 500)} alt="" loading="lazy" /></div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .bv-marquee { position: relative; background: var(--sea-deep); padding: var(--space-6) 0 var(--space-7); overflow: hidden; }
+        .bv-marquee .mq-words { overflow: hidden; margin-bottom: var(--space-6); }
+        .mq-words-track { display: flex; width: max-content; gap: 0; animation: mqWords 26s linear infinite; }
+        .mq-word {
+          display: inline-flex; align-items: center; gap: clamp(20px, 4vw, 54px);
+          font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+          font-size: clamp(1.6rem, 4vw, 3rem); letter-spacing: -0.02em;
+          color: transparent; -webkit-text-stroke: 1.5px rgba(251,248,241,0.5); padding-right: clamp(20px, 4vw, 54px);
+        }
+        .mq-word:nth-child(3n) { color: var(--royal); -webkit-text-stroke: 0; }
+        .mq-word:nth-child(4n) { color: rgba(251,248,241,0.92); -webkit-text-stroke: 0; }
+        .mq-dot { color: var(--dune-soft); -webkit-text-stroke: 0; }
+
+        .mq-photos { overflow: hidden; }
+        .mq-photos-track { display: flex; gap: 18px; width: max-content; animation: mqPhotos 50s linear infinite; }
+        .bv-marquee:hover .mq-photos-track, .bv-marquee:hover .mq-words-track { animation-play-state: paused; }
+        .mq-item { flex: none; width: clamp(220px, 24vw, 320px); height: clamp(150px, 16vw, 210px);
+          border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); }
+        .mq-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out); }
+        .mq-item:hover img { transform: scale(1.07); }
+
+        @keyframes mqPhotos { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes mqWords  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @media (prefers-reduced-motion: reduce) {
+          .mq-photos-track, .mq-words-track { animation: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+window.Marquee = Marquee;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Why.jsx (inbakat) === */
+// Why — "Varför delta?" Four warm reasons, told in an editorial, hand-made way
+// rather than as four identical icon-cards (which read too "templated"). Each
+// reason is an index entry: a mono numeral on a hairline rule, a heading with a
+// hand-drawn underline, and a short paragraph. No boxes, no tinted icon tiles.
+function Why() {
+  // Hand-drawn underline strokes — slightly irregular so they read as marker,
+  // not as a CSS border. A few variants for rhythm.
+  const underlines = [
+    'M3 9 C 40 3, 96 13, 150 6 S 232 3, 250 8',
+    'M3 7 C 52 13, 104 2, 158 9 S 220 12, 250 6',
+    'M3 8 C 46 2, 92 12, 140 6 S 214 4, 250 9',
+    'M3 6 C 58 12, 110 3, 162 10 S 226 5, 250 8',
+  ];
+
+  const items = [
+    { tone: 'var(--sea)',  title: 'Spela & tävla',  body: 'Mät er mot andra lag i glada matcher på sanden. Alla spelar i samma turnering — kämpa om segern, men framför allt ha skoj.' },
+    { tone: 'var(--dune)', title: 'Sommarkänsla',   body: 'Strand, hav, sol och härlig stämning hela dagen. En riktig sommardag vid Sveriges sydligaste badstrand.' },
+    { tone: 'var(--sea)',  title: 'Gemenskap',      body: 'Träffa nya människor, häng med gamla kompisar och umgås i sanden. Hela dagen handlar om att komma samman.' },
+    { tone: 'var(--dune)', title: 'Upplevelsen',    body: 'En dag som sticker ut från resten av sommaren — boll, skratt och minnen du bär med dig långt efter att solen gått ner.' },
+  ];
+
+  return (
+    <section id="varfor" className="topfade" style={{ position: 'relative', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div className="ds-container">
+        <div className="reveal" style={{ maxWidth: '54ch', marginBottom: 'var(--space-8)' }}>
+          <div className="ds-eyebrow">Varför delta?</div>
+          <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Mer än bara en turnering</h2>
+          <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
+            En hel dag av boll, bad och gemenskap på Dalabadet. Här är vad som väntar.
+          </p>
+        </div>
+
+        <div className="why-list">
+          {items.map((it, i) => (
+            <article key={it.title} className={`why-item reveal reveal-d${(i % 4) + 1}`}>
+              <div className="why-index">
+                <span className="why-num" style={{ color: it.tone }}>{String(i + 1).padStart(2, '0')}</span>
+                <span className="why-rule"></span>
+              </div>
+              <h3 className="why-title">
+                {it.title}
+                <svg className="why-ul" viewBox="0 0 253 15" width="170" height="11" fill="none" aria-hidden="true" preserveAspectRatio="none">
+                  <path d={underlines[i]} stroke={it.tone} strokeWidth="3.4" strokeLinecap="round" />
+                </svg>
+              </h3>
+              <p className="why-body">{it.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .why-list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: var(--space-9, 72px);
+          row-gap: var(--space-8);
+        }
+        .why-item { max-width: 46ch; }
+        .why-index {
+          display: flex; align-items: center; gap: var(--space-4);
+          margin-bottom: var(--space-4);
+        }
+        .why-num {
+          font-family: var(--font-mono); font-weight: 600;
+          font-size: 1.05rem; letter-spacing: 0.12em;
+        }
+        .why-rule { flex: 1; height: 1px; background: var(--sand-hair); }
+        .why-title {
+          position: relative; display: inline-block;
+          font-size: var(--fs-h2); margin: 0 0 var(--space-5);
+          padding-bottom: 4px;
+        }
+        .why-ul {
+          position: absolute; left: -2px; bottom: -7px;
+          width: calc(100% + 10px); height: 11px;
+        }
+        .why-body { color: var(--text-body); font-size: var(--fs-body); margin: 0; }
+
+        @media (max-width: 720px) {
+          .why-list { grid-template-columns: 1fr; row-gap: var(--space-7); }
+        }
+      `}</style>
+    </section>
+  );
+}
+window.Why = Why;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Stats.jsx (inbakat) === */
+// Stats — a short band of honest, punchy facts that count up the first time
+// they scroll into view. Numbers only where they're true (no invented figures):
+// one full day, four per team, ~7 hours of play, 100% summer feeling.
+function useCountUp(target, suffix, run) {
+  const [val, setVal] = React.useState(0);
+  React.useEffect(() => {
+    if (!run) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setVal(target); return; }
+    let raf, start;
+    const dur = 1400;
+    const tick = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setVal(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [run, target]);
+  return `${val}${suffix || ''}`;
+}
+
+function StatTile({ value, suffix, label, sub, run }) {
+  const shown = useCountUp(value, suffix, run);
+  return (
+    <div className="stat-tile">
+      <div className="stat-num ds-mono">{shown}</div>
+      <div className="stat-label">{label}</div>
+      <div className="stat-sub">{sub}</div>
+    </div>
+  );
+}
+
+function Stats() {
+  const ref = React.useRef(null);
+  const [run, setRun] = React.useState(false);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { setRun(true); return; }
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) { setRun(true); io.disconnect(); } });
+    }, { threshold: 0.35 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const tiles = [
+    { value: 1, suffix: '', label: 'Hel dag', sub: 'Sol från morgon till kväll' },
+    { value: 4, suffix: '', label: 'Spelare per lag', sub: 'Samla gänget' },
+    { value: 7, suffix: 'h', label: 'Bollspel', sub: 'Från första serve till final' },
+    { value: 100, suffix: '%', label: 'Sommarkänsla', sub: 'Garanterat skratt i sanden' },
+  ];
+
+  return (
+    <section ref={ref} className="bv-stats" aria-label="Snabba fakta">
+      <div className="ds-container">
+        <div className="stat-grid">
+          {tiles.map((t, i) => (
+            <div className={`reveal reveal-d${i + 1}`} key={t.label}>
+              <StatTile {...t} run={run} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .bv-stats { background: var(--sand); padding: var(--space-7) 0; border-top: 1px solid var(--sand-hair); border-bottom: 1px solid var(--sand-hair); }
+        .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+        .stat-tile { text-align: center; padding: 0 var(--space-3); position: relative; }
+        .stat-grid > div:not(:last-child) .stat-tile::after {
+          content: ""; position: absolute; right: calc(var(--space-6) / -2); top: 10%; bottom: 10%;
+          width: 1px; background: var(--sand-hair);
+        }
+        .stat-num { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 600; line-height: 1; color: var(--royal); }
+        .stat-label { font-family: var(--font-display); text-transform: uppercase; font-weight: 700; letter-spacing: -0.01em; font-size: var(--fs-h3); color: var(--sea-deep); margin-top: var(--space-3); }
+        .stat-sub { color: var(--text-muted); font-size: var(--fs-sm); margin-top: 4px; }
+        @media (max-width: 720px) {
+          .stat-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-7) var(--space-5); }
+          .stat-grid > div:nth-child(odd) .stat-tile::after { content: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+window.Stats = Stats;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Schedule.jsx (inbakat) === */
+// Schedule — "Dagen i detalj" as a vertical journey timeline. Mono times,
+// a connecting rail, and dots that fill royal as each step rises into view.
+function Schedule() {
+  const rows = [
+    { t: '09:00', a: 'Incheckning & uppvärmning', n: 'Hämta nummerlapp, hitta er plan och mjuka upp i sanden.' },
+    { t: '10:00', a: 'Turneringen drar igång', n: 'Gruppspel — alla lag spelar tillsammans i samma turnering.' },
+    { t: '12:30', a: 'Lunchpaus', n: 'Ta med egen matsäck — dryck finns att köpa på stranden. Ladda om inför eftermiddagen.' },
+    { t: '13:30', a: 'Slutspel', n: 'De bästa lagen gör upp i utslagsmatcher.' },
+    { t: '16:00', a: 'Final & prisutdelning', n: 'Vi koras dagens mästare och delar ut priset.' },
+    { t: '16:30', a: 'Häng kvar på stranden', n: 'Stanna, umgås och njut av kvällen vid havet.' },
+  ];
+
+  return (
+    <section id="schema" style={{ position: 'relative', background: 'var(--sand-deep)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div aria-hidden="true" style={{ position: 'absolute', left: 0, right: 0, top: 0, height: '3px', background: 'var(--royal)' }}></div>
+      <div className="ds-container">
+        <div className="reveal" style={{ maxWidth: '54ch', marginBottom: 'var(--space-8)' }}>
+          <div className="ds-eyebrow">Schema</div>
+          <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dagen i detalj</h2>
+          <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
+            En resa genom dagen — från första serve till solnedgång. Ungefärliga
+            tider, vi justerar på plats efter hur många lag som dyker upp.
+          </p>
+        </div>
+
+        <div style={{ position: 'relative', maxWidth: '780px' }}>
+          {/* rail */}
+          <div aria-hidden="true" style={{
+            position: 'absolute', left: '23px', top: '14px', bottom: '14px', width: '2px',
+            background: 'var(--sand-hair)',
+          }}></div>
+
+          {rows.map((r, i) => (
+            <div key={r.t} className={`reveal sched-row`} style={{
+              position: 'relative', display: 'grid', gridTemplateColumns: '48px 96px 1fr',
+              gap: 'var(--space-4)', alignItems: 'baseline', padding: 'var(--space-5) 0',
+            }}>
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'center' }}>
+                <span className="sched-dot" style={{
+                  width: '18px', height: '18px', borderRadius: '999px', marginTop: '6px',
+                  background: 'var(--white)', border: '3px solid var(--sea-tint-3)',
+                  transition: 'background .4s var(--ease-out), border-color .4s var(--ease-out), transform .4s var(--ease-out)',
+                }}></span>
+              </div>
+              <div className="ds-time" style={{ fontSize: '1.45rem', fontWeight: 600, color: 'var(--sea-deep)' }}>{r.t}</div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-display)', textTransform: 'uppercase', letterSpacing: '-0.01em', fontWeight: 700, fontSize: 'var(--fs-h3)', color: 'var(--sea)' }}>{r.a}</div>
+                <div style={{ color: 'var(--text-body)', marginTop: '4px', maxWidth: '46ch' }}>{r.n}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .sched-row.in .sched-dot { background: var(--royal); border-color: var(--royal); transform: scale(1.06); }
+        @media (max-width: 560px) {
+          .sched-row { grid-template-columns: 40px 72px 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+window.Schedule = Schedule;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Moment.jsx (inbakat) === */
+// Moment — the emotional centrepiece. A full-bleed photograph with a slow
+// parallax + Ken Burns drift and a dark scrim, big aspirational copy and a CTA.
+// This is the "you don't want to miss this" beat of the page.
+function Moment({ onRegister }) {
+  const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+  return (
+    <section className="bv-moment" id="kanslan">
+      <div className="bv-moment-bg" data-parallax="0.14" aria-hidden="true"
+        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.menPlay, 1600)})` }}></div>
+      <div className="bv-moment-scrim" aria-hidden="true"></div>
+
+      <div className="ds-container bv-moment-inner">
+        <div className="reveal">
+          <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.75)' }}>Känslan</div>
+          <h2 style={{ color: 'var(--white)', fontSize: 'var(--fs-hero)', lineHeight: 0.92, maxWidth: '16ch', margin: '0.2em 0 0', textShadow: '0 4px 30px rgba(0,0,0,0.35)' }}>
+            Sommarens<br />självklara höjdpunkt
+          </h2>
+          <p style={{ color: 'rgba(251,248,241,0.92)', fontSize: 'var(--fs-lead)', maxWidth: '44ch', marginTop: '1em', textShadow: '0 2px 16px rgba(0,0,0,0.4)' }}>
+            Barfota i varm sand, havet som glittrar, bollen i luften och gänget
+            som hejar. Det här är dagen alla snackar om långt efter att solen
+            gått ner. Var med från start — kliv i sanden och spela.
+          </p>
+          <div style={{ display: 'flex', gap: '12px', marginTop: '1.6em', flexWrap: 'wrap' }}>
+            <Button variant="primary" size="lg" onClick={onRegister}>Säkra din plats</Button>
+            <Button as="a" href="#schema" variant="secondary" size="lg"
+              style={{ color: 'var(--white)', borderColor: 'rgba(251,248,241,0.7)' }}>Se dagen</Button>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
+        .bv-moment-bg {
+          position: absolute; left: 0; right: 0; top: -12%; height: 124%;
+          background-size: cover; background-position: center 40%; z-index: 0; will-change: transform;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }
+        }
+        @keyframes momentKen { from { background-size: 112%; } to { background-size: 126%; } }
+        .bv-moment-scrim {
+          position: absolute; inset: 0; z-index: 1;
+          background:
+            linear-gradient(180deg, rgba(27,71,80,0.25) 0%, rgba(27,71,80,0) 30%, rgba(27,71,80,0.15) 55%, rgba(27,71,80,0.78) 100%),
+            linear-gradient(90deg, rgba(27,71,80,0.55) 0%, rgba(27,71,80,0.1) 55%, rgba(27,71,80,0) 100%);
+        }
+        .bv-moment-inner { position: relative; z-index: 2; padding-top: var(--space-10); padding-bottom: var(--space-9); }
+      `}</style>
+    </section>
+  );
+}
+window.Moment = Moment;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Prize.jsx (inbakat) === */
+// Prize — "Att spela om". A tasteful winner moment, not a commercial prize wall
+// (the event isn't prize-driven). One dark feature panel with a podium graphic.
+function Prize() {
+  const { Card, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+  return (
+    <section id="pris" style={{ position: 'relative', background: 'var(--sand)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div className="ds-container">
+        <Card tone="dark" padding="none" className="reveal" style={{ overflow: 'hidden', position: 'relative' }}>
+          {/* faint arc detail in the corner */}
+          <svg aria-hidden="true" viewBox="0 0 400 300" style={{ position: 'absolute', right: 0, top: 0, width: '46%', height: '100%', opacity: 0.5, pointerEvents: 'none' }}>
+            <path d="M -20 280 C 120 120, 280 80, 420 160" fill="none" stroke="rgba(251,248,241,0.18)" strokeWidth="2" strokeDasharray="5 11" strokeLinecap="round"/>
+          </svg>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-7)', alignItems: 'center', padding: 'var(--space-8) var(--space-7)' }}>
+            <div>
+              <Badge tone="royal" style={{ background: 'rgba(44,75,212,0.22)', color: '#cdd5f7' }}>Att spela om</Badge>
+              <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.45em 0 0.3em' }}>Dagens mästare</h2>
+              <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
+                Vinnarlaget koras till Dagens mästare och tar emot priset under
+                prisutdelningen — plus äran och skryträtten ända till nästa sommar.
+              </p>
+              <p style={{ color: 'var(--text-on-dark-muted)', maxWidth: '40ch' }}>
+                Men ärligt talat: efter en hel dag med boll, bad och sol går alla
+                hem som vinnare. Föreställ dig redan nu känslan av att stå högst upp.
+              </p>
+            </div>
+
+            {/* Podium illustration */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <svg viewBox="0 0 360 260" width="100%" style={{ maxWidth: '380px', height: 'auto' }} aria-label="Prispall med pokal">
+                {/* trophy */}
+                <g transform="translate(180 6)">
+                  <path d="M-26 4 h52 v18 a26 26 0 0 1 -52 0 z" fill="#FBF8F1"/>
+                  <path d="M-26 8 h-12 a10 10 0 0 0 12 14 M26 8 h12 a10 10 0 0 1 -12 14" fill="none" stroke="#FBF8F1" strokeWidth="4" strokeLinecap="round"/>
+                  <rect x="-6" y="44" width="12" height="14" fill="#FBF8F1"/>
+                  <rect x="-20" y="58" width="40" height="9" rx="3" fill="#FBF8F1"/>
+                  <path d="M-12 14 a12 12 0 0 0 24 0" fill="none" stroke="#2C4BD4" strokeWidth="3" strokeLinecap="round"/>
+                </g>
+                {/* podium blocks */}
+                <g fontFamily="Spline Sans Mono, monospace" fontWeight="600">
+                  <rect x="20"  y="150" width="96" height="86"  rx="6" fill="#2E6F80"/>
+                  <text x="68"  y="206" textAnchor="middle" fill="#FBF8F1" fontSize="30">2</text>
+                  <rect x="132" y="110" width="96" height="126" rx="6" fill="#2C4BD4"/>
+                  <text x="180" y="184" textAnchor="middle" fill="#FBF8F1" fontSize="36">1</text>
+                  <rect x="244" y="172" width="96" height="64"  rx="6" fill="#6E8B57"/>
+                  <text x="292" y="218" textAnchor="middle" fill="#FBF8F1" fontSize="26">3</text>
+                </g>
+                {/* sand line */}
+                <rect x="8" y="236" width="344" height="8" rx="4" fill="rgba(251,248,241,0.18)"/>
+              </svg>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </section>
+  );
+}
+window.Prize = Prize;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Gallery.jsx (inbakat) === */
+// Gallery — "Bilder från sanden". A bento grid of real beach-volley photos with
+// staggered reveal, hover zoom and a caption that rises on hover. Gives the page
+// a confident, editorial block of photography.
+function Gallery() {
+  const P = window.BV_PHOTOS;
+  const shots = [
+    { id: P.dive,      label: 'Räddningen',  cls: 'g-wide', w: 1100 },
+    { id: P.friends,   label: 'Hela gänget', cls: 'g-tall', w: 800 },
+    { id: P.serve,     label: 'Serven',      cls: '',       w: 700 },
+    { id: P.menPlay,   label: 'Rallyt',      cls: '',       w: 700 },
+    { id: P.lifestyle, label: 'Strandliv',   cls: 'g-tall', w: 800 },
+    { id: P.heroAction, label: 'Smashen',    cls: 'g-wide', w: 1100 },
+    { id: P.netReady,  label: 'Vid nätet',   cls: '',       w: 700 },
+    { id: P.duo,       label: 'Duon',        cls: '',       w: 700 },
+  ];
+
+  return (
+    <section id="galleri" className="bv-gallery" style={{ background: 'var(--sand)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div className="ds-container">
+        <div className="reveal" style={{ maxWidth: '54ch', marginBottom: 'var(--space-7)' }}>
+          <div className="ds-eyebrow">Galleri</div>
+          <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Bilder från sanden</h2>
+          <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '46ch' }}>
+            Sol, hopp och full fart vid nätet — så här ser en dag på stranden ut.
+          </p>
+        </div>
+
+        <div className="gallery-grid">
+          {shots.map((s, i) => (
+            <figure key={i} className={`gcell reveal reveal-d${(i % 4) + 1} ${s.cls}`}>
+              <img src={window.BV_IMG(s.id, s.w)} alt={`Beachvolley — ${s.label}`} loading="lazy" />
+              <figcaption><span>{s.label}</span></figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .gallery-grid {
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: 200px; gap: var(--space-4);
+        }
+        .gcell {
+          position: relative; margin: 0; overflow: hidden;
+          border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
+          background: var(--sea-tint-1);
+        }
+        .gcell.g-wide { grid-column: span 2; }
+        .gcell.g-tall { grid-row: span 2; }
+        .gcell img { width: 100%; height: 100%; object-fit: cover; display: block;
+          transition: transform .7s var(--ease-out); }
+        .gcell:hover img { transform: scale(1.07); }
+        .gcell figcaption {
+          position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-5) var(--space-4) var(--space-4);
+          background: linear-gradient(180deg, rgba(27,71,80,0) 0%, rgba(27,71,80,0.72) 100%);
+          color: var(--white); opacity: 0; transform: translateY(10px);
+          transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+        }
+        .gcell:hover figcaption { opacity: 1; transform: none; }
+        .gcell figcaption span {
+          font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em;
+          font-size: var(--fs-xs); font-weight: 500;
+        }
+        @media (max-width: 860px) {
+          .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+          .gcell.g-wide { grid-column: span 2; }
+          .gcell.g-tall { grid-row: span 1; }
+          .gcell figcaption { opacity: 1; transform: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+window.Gallery = Gallery;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Location.jsx (inbakat) === */
+// Location — Dalabadet copy + an illustrative map graphic (no fake photos).
+function Location() {
+  const { Card, Button, Badge } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+  const facts = ['Sveriges sydligaste badstrand', 'Långgrunt vatten', 'Gott om plats i sanden'];
+  return (
+    <section id="plats" style={{ position: 'relative', background: 'var(--sand-deep)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div aria-hidden="true" style={{ position: 'absolute', left: 0, right: 0, top: 0, height: '3px', background: 'var(--royal)' }}></div>
+      <div className="ds-container">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-8)', alignItems: 'center' }}>
+          <div className="reveal">
+            <div className="ds-eyebrow">Plats</div>
+            <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Dalabadet, Trelleborg</h2>
+            <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '44ch' }}>
+              Vi spelar på sandstranden vid Dalabadet — Sveriges sydligaste badstrand,
+              med långgrunt vatten och gott om plats. Lätt att ta sig till och perfekt
+              för en hel dag vid havet.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', margin: 'var(--space-5) 0' }}>
+              {facts.map((f) => <Badge key={f} tone="sea">{f}</Badge>)}
+            </div>
+            <p style={{ color: 'var(--text-muted)', maxWidth: '44ch' }}>Mer exakt info om var planerna ligger kommer närmare turneringen.</p>
+            <div style={{ marginTop: 'var(--space-5)' }}>
+              <Button as="a" href="https://maps.google.com/?q=Dalabadet+Trelleborg" target="_blank" rel="noopener" variant="secondary">Öppna i kartan</Button>
+            </div>
+          </div>
+
+          {/* Real, embedded map (satellite/hybrid — Google Earth-like) of Dalabadet. */}
+          <Card tone="raised" padding="none" className="reveal reveal-d2" style={{ overflow: 'hidden', position: 'relative' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '520 / 380', background: 'var(--sea-tint-1)' }}>
+              <iframe
+                title="Karta över Dalabadet, Trelleborg"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=13.1800%2C55.3655%2C13.2130%2C55.3800&layer=mapnik&marker=55.3727%2C13.1969"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}
+              ></iframe>
+            </div>
+            {/* small place label chip, sits over the map corner */}
+            <div style={{
+              position: 'absolute', left: '12px', bottom: '12px', zIndex: 2,
+              display: 'inline-flex', alignItems: 'center', gap: '7px',
+              background: 'rgba(251,248,241,0.92)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)',
+              padding: '0.5em 0.85em', borderRadius: '999px', boxShadow: 'var(--shadow-sm)',
+              fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', textTransform: 'uppercase',
+              letterSpacing: '0.06em', color: 'var(--sea-deep)',
+            }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--royal)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              Dalabadet, Trelleborg
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
+window.Location = Location;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Faq.jsx (inbakat) === */
+// FAQ — elegant accordion. Single-open, animated height, rotates the + into ×.
+function FaqItem({ q, a, open, onToggle }) {
+  const ref = React.useRef(null);
+  const [h, setH] = React.useState(0);
+  React.useEffect(() => {
+    setH(open && ref.current ? ref.current.scrollHeight : 0);
+  }, [open, a]);
+  return (
+    <div className="faq-item" data-open={open ? 'true' : 'false'}>
+      <button className="faq-q" aria-expanded={open} onClick={onToggle}>
+        <span>{q}</span>
+        <span className="faq-icon" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+      </button>
+      <div className="faq-a" style={{ height: h + 'px' }}>
+        <div className="faq-a-inner" ref={ref}>{a}</div>
+      </div>
+    </div>
+  );
+}
+
+function Faq() {
+  const [open, setOpen] = React.useState(0);
+  const items = [
+    { q: 'Hur många spelare får vara i ett lag?', a: 'Varje lag är 4 spelare. Ange kontaktperson i anmälan, så löser vi resten på plats.' },
+    { q: 'Behöver man vara erfaren?', a: 'Nej. Alla nivåer är välkomna och spelar i samma turnering, oavsett kön och vana. Vi hejar lika hårt på nybörjarna som på proffsen, det viktiga är att ha kul.' },
+    { q: 'Vad kostar det?', a: 'Anmälningsavgiften är ca 299 kr per lag. Ta med egen matsäck — dryck finns att köpa på stranden under dagen.' },
+    { q: 'Vad ingår?', a: 'Spel hela dagen, plats i sanden, schema och en härlig dag vid havet. Finalen avslutas med prisutdelning där dagens mästare koras.' },
+    { q: 'Hur anmäler man sig?', a: 'Fyll i anmälningsformuläret längre ner på sidan — lagnamn, kontaktperson, e-post, telefon och antal spelare (4 per lag). Ni får en bekräftelse, och vi hör av oss innan turneringen.' },
+    { q: 'Finns det olika klasser?', a: 'Nej, inga klasser eller divisioner. Alla lag spelar tillsammans i samma turnering. Det finns heller ingen gräns för antal lag — alla som anmäler sig får plats.' },
+  ];
+  return (
+    <section id="fragor" style={{ position: 'relative', background: 'var(--sand)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div className="ds-container" style={{ maxWidth: 'var(--maxw-narrow)' }}>
+        <div className="reveal" style={{ marginBottom: 'var(--space-7)' }}>
+          <div className="ds-eyebrow">Vanliga frågor</div>
+          <h2 style={{ fontSize: 'var(--fs-display)', marginTop: '0.3em' }}>Bra att veta</h2>
+        </div>
+        <div className="reveal reveal-d1" style={{ borderTop: '1px solid var(--sand-hair)' }}>
+          {items.map((it, i) => (
+            <FaqItem key={it.q} q={it.q} a={it.a} open={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+window.Faq = Faq;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Follow.jsx (inbakat) === */
+// Follow — a calm "håll koll"-strip before the registration. Honest about the
+// fact that the date and channels aren't set yet: invites people to follow on
+// social for the date drop. No fake sponsors, no fake date.
+// Social accounts not chosen yet — placeholder hrefs, swap when ready.
+function Follow() {
+  const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+
+  const socialBtn = {
+    width: '52px', height: '52px', borderRadius: '999px',
+    border: '1.5px solid var(--sand-hair)', background: 'var(--white)',
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+    color: 'var(--sea-deep)', textDecoration: 'none',
+    transition: 'transform .3s var(--ease-out), border-color .25s, color .25s, background .25s',
+  };
+
+  return (
+    <section id="folj" style={{ position: 'relative', background: 'var(--sand)', paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)' }}>
+      <div className="ds-container">
+        <div className="reveal" style={{
+          position: 'relative', overflow: 'hidden',
+          background: 'var(--sand-deep)', borderRadius: 'var(--radius-lg)',
+          border: '1px solid var(--sand-hair)',
+          padding: 'clamp(28px, 5vw, 56px)',
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: 'var(--space-7)', alignItems: 'center',
+        }}>
+          {/* faint arc detail */}
+          <svg aria-hidden="true" viewBox="0 0 500 300" style={{ position: 'absolute', right: '-4%', top: 0, width: '50%', height: '100%', opacity: 0.45, pointerEvents: 'none' }}>
+            <path d="M -20 280 C 140 120, 320 80, 520 180" fill="none" stroke="var(--sea-tint-3)" strokeWidth="2" strokeDasharray="5 11" strokeLinecap="round"/>
+          </svg>
+
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div className="ds-eyebrow">Håll koll</div>
+            <h2 style={{ fontSize: 'var(--fs-h1)', marginTop: '0.3em', maxWidth: '16ch' }}>Datum meddelas snart</h2>
+            <p style={{ color: 'var(--text-body)', fontSize: 'var(--fs-lead)', maxWidth: '42ch', margin: '0.6em 0 0' }}>
+              Vi spikar datumet inom kort. Följ oss på sociala medier så är du
+              först att veta när det är dags — och missa inte starten av anmälan.
+            </p>
+          </div>
+
+          <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--space-5)', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', gap: '14px' }}>
+              {/* TODO: byt ut mot riktig Instagram-länk */}
+              <a href="#" aria-label="Instagram" className="follow-soc" style={socialBtn}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+              {/* TODO: byt ut mot riktig Facebook-länk */}
+              <a href="#" aria-label="Facebook" className="follow-soc" style={socialBtn}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+            </div>
+            <Button as="a" href="#anmalan" variant="primary" size="md">Anmäl ditt lag redan nu</Button>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .follow-soc:hover { transform: translateY(-3px); border-color: var(--royal); color: var(--royal); }
+      `}</style>
+    </section>
+  );
+}
+window.Follow = Follow;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Registration.jsx (inbakat) === */
+// Registration — the page climax. Dark sea-deep ground with the embedded,
+// validated anmälningsformulär. Fields in brief order: Lagnamn, Kontaktperson,
+// E-post, Telefon, Antal spelare (2–6, fyra vanligast). Frontend-only: it
+// validates, then swaps to a warm confirmation. No backend yet.
+// TODO: koppla submit till riktig mottagare (mejl / Google Sheet / databas).
+function Registration({ onRegister }) {
+  const { Card, Button, Input, Select } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
+
+  const [values, setValues] = React.useState({
+    team: '', contact: '', email: '', phone: '', players: '4',
+  });
+  const [errors, setErrors] = React.useState({});
+  const [sent, setSent] = React.useState(false);
+
+  const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
+
+  const validate = () => {
+    const er = {};
+    if (!values.team.trim()) er.team = 'Fyll i ett lagnamn';
+    if (!values.contact.trim()) er.contact = 'Fyll i en kontaktperson';
+    if (!/^\S+@\S+\.\S+$/.test(values.email)) er.email = 'Fyll i en giltig e-post';
+    if (!/[0-9]{6,}/.test(values.phone.replace(/\s/g, ''))) er.phone = 'Fyll i ett telefonnummer';
+    setErrors(er);
+    return Object.keys(er).length === 0;
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    // TODO: skicka `values` till en riktig backend här.
+    if (validate()) setSent(true);
+  };
+
+  const reset = () => {
+    setSent(false);
+    setValues({ team: '', contact: '', email: '', phone: '', players: '4' });
+    setErrors({});
+  };
+
+  return (
+    <section id="anmalan" style={{
+      position: 'relative', background: 'var(--sea-deep)', overflow: 'hidden',
+      paddingTop: 'var(--section-pad-y)', paddingBottom: 'var(--section-pad-y)',
+    }}>
+      <div aria-hidden="true" style={{ position: 'absolute', left: 0, right: 0, top: 0, height: '3px', background: 'var(--royal)' }}></div>
+
+      {/* faint signature arc in the corner */}
+      <svg aria-hidden="true" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" style={{
+        position: 'absolute', right: 0, bottom: 0, width: '55%', height: '100%', opacity: 0.5, pointerEvents: 'none', zIndex: 0,
+      }}>
+        <path d="M -40 380 C 200 160, 440 90, 660 220" fill="none" stroke="rgba(251,248,241,0.12)" strokeWidth="2" strokeDasharray="6 13" strokeLinecap="round"/>
+      </svg>
+
+      <div className="ds-container" style={{
+        position: 'relative', zIndex: 1,
+        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: 'var(--space-8)', alignItems: 'start',
+      }}>
+        <div className="reveal">
+          <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.7)' }}>Anmälan</div>
+          <h2 style={{ fontSize: 'var(--fs-display)', color: 'var(--white)', margin: '0.3em 0 0.35em' }}>Anmäl ditt lag</h2>
+          <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-lead)', maxWidth: '40ch' }}>
+            Anmälningsavgiften är ca 299 kr per lag och det går snabbt att anmäla
+            sig. Anmäl er så snart som möjligt — sista anmälningsdag meddelas
+            senare. Det finns ingen gräns för antal lag, så alla som vill får plats.
+          </p>
+
+          <ul style={{ listStyle: 'none', padding: 0, margin: 'var(--space-6) 0 0', display: 'grid', gap: 'var(--space-3)' }}>
+            {['Ca 299 kr per lag', 'Alla nivåer spelar tillsammans', '4 spelare per lag'].map((t) => (
+              <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--white)', fontSize: 'var(--fs-body)' }}>
+                <span style={{
+                  flex: 'none', width: '26px', height: '26px', borderRadius: '999px',
+                  background: 'rgba(110,139,87,0.30)', display: 'grid', placeItems: 'center',
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--dune-soft)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <Card tone="raised" padding="lg" className="reveal reveal-d2">
+          {sent ? (
+            <div style={{ textAlign: 'center', padding: 'var(--space-5) 0' }}>
+              <div style={{
+                width: '64px', height: '64px', borderRadius: '999px', margin: '0 auto var(--space-4)',
+                background: 'rgba(110,139,87,0.16)', display: 'grid', placeItems: 'center',
+              }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--dune)" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--dune)', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.78rem' }}>✓ Anmälan mottagen</div>
+              <h3 style={{ fontSize: 'var(--fs-h2)', margin: '0.45em 0 0.3em' }}>Tack, {values.team || 'laget'}!</h3>
+              <p style={{ color: 'var(--text-body)', margin: '0 auto', maxWidth: '34ch' }}>
+                Ni är anmälda — vi hör av oss innan turneringen. Vi ses på Dalabadet!
+              </p>
+              <div style={{ marginTop: 'var(--space-5)' }}>
+                <Button variant="secondary" onClick={reset}>Anmäl ett lag till</Button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={submit} noValidate style={{ display: 'grid', gap: 'var(--space-4)' }}>
+              <Input label="Lagnamn" value={values.team} onChange={set('team')} error={errors.team} placeholder="Ert lagnamn" />
+              <Input label="Kontaktperson" value={values.contact} onChange={set('contact')} error={errors.contact} placeholder="Förnamn Efternamn" />
+              <Input label="E-post" type="email" value={values.email} onChange={set('email')} error={errors.email}
+                hint={!errors.email ? 'Vi skickar bekräftelse hit.' : undefined} placeholder="namn@exempel.se" />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 130px', gap: 'var(--space-4)', alignItems: 'start' }}>
+                <Input label="Telefon" type="tel" value={values.phone} onChange={set('phone')} error={errors.phone} placeholder="07X-XXX XX XX" />
+                <Input label="Spelare" value="4" readOnly hint="4 per lag" />
+              </div>
+              <div style={{ marginTop: 'var(--space-2)' }}>
+                <Button type="submit" variant="primary" size="lg" fullWidth>Skicka anmälan</Button>
+              </div>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', color: 'var(--text-muted)', textAlign: 'center', margin: 0 }}>
+                299 kr/lag · Inga klasser · Alla välkomna
+              </p>
+            </form>
+          )}
+        </Card>
+      </div>
+    </section>
+  );
+}
+window.Registration = Registration;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Footer.jsx (inbakat) === */
+// Footer — dark sea-deep base. Swappable text logo, page links matching the
+// real sections, a contact placeholder and social placeholders.
+// Contact details + social accounts not set yet — swap when available.
+function Footer() {
+  const linkStyle = {
+    fontFamily: 'var(--font-body)', color: 'var(--text-on-dark-muted)',
+    textDecoration: 'none', fontSize: 'var(--fs-sm)', display: 'block', padding: '3px 0',
+    transition: 'color .2s ease',
+  };
+  const socialBtn = {
+    width: '40px', height: '40px', borderRadius: '999px',
+    border: '1px solid var(--border-on-dark)', display: 'inline-flex',
+    alignItems: 'center', justifyContent: 'center', color: 'var(--white)',
+    textDecoration: 'none', transition: 'background .25s ease, border-color .25s ease',
+  };
+  const links = [
+    { href: '#varfor', label: 'Varför delta' },
+    { href: '#schema', label: 'Schema' },
+    { href: '#plats', label: 'Plats' },
+    { href: '#fragor', label: 'Vanliga frågor' },
+    { href: '#anmalan', label: 'Anmälan' },
+  ];
+
+  return (
+    <footer style={{ background: 'var(--sea-deep)', borderTop: '1px solid var(--border-on-dark)' }}>
+      <div className="ds-container" style={{ paddingTop: 'var(--space-8)', paddingBottom: 'var(--space-7)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-7)' }}>
+          <div>
+            <Logo onDark />
+            <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-4)', maxWidth: '30ch' }}>
+              En lokal beachvolleydag på Dalabadet i Trelleborg. Kom och spela,
+              häng och umgås — alla är välkomna.
+            </p>
+          </div>
+
+          <div>
+            <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.5)' }}>Sidan</div>
+            <div style={{ marginTop: 'var(--space-3)' }}>
+              {links.map((l) => (
+                <a key={l.href} href={l.href} className="foot-link" style={linkStyle}>{l.label}</a>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="ds-eyebrow" style={{ color: 'rgba(251,248,241,0.5)' }}>Kontakt</div>
+            {/* TODO: byt ut mot riktig e-post/telefon när de finns */}
+            <p style={{ color: 'var(--text-on-dark-muted)', fontSize: 'var(--fs-sm)', marginTop: 'var(--space-3)', maxWidth: '26ch' }}>
+              Kontaktuppgifter kommer snart.
+            </p>
+            <div style={{ display: 'flex', gap: '10px', marginTop: 'var(--space-4)' }}>
+              {/* TODO: byt ut mot riktig Instagram-länk */}
+              <a href="#" aria-label="Instagram" className="foot-soc" style={socialBtn}>
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+              {/* TODO: byt ut mot riktig Facebook-länk */}
+              <a href="#" aria-label="Facebook" className="foot-soc" style={socialBtn}>
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style={{
+          marginTop: 'var(--space-7)', paddingTop: 'var(--space-5)',
+          borderTop: '1px solid var(--border-on-dark)',
+          display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px',
+        }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', color: 'rgba(251,248,241,0.5)' }}>© Dalabadet Beachvolley Cup</span>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--fs-xs)', color: 'rgba(251,248,241,0.5)' }}>Dalabadet · Trelleborg</span>
+        </div>
+      </div>
+
+      <style>{`
+        .foot-link:hover { color: var(--white) !important; }
+        .foot-soc:hover { background: var(--royal); border-color: var(--royal); }
+      `}</style>
+    </footer>
+  );
+}
+window.Footer = Footer;
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/tweaks-panel.jsx (inbakat) === */
+// @ds-adherence-ignore -- omelette starter scaffold (raw elements/hex/px by design)
+
+/* BEGIN USAGE */
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+// Exports (to window): useTweaks, TweaksPanel, TweakSection, TweakRow, TweakSlider,
+//   TweakToggle, TweakRadio, TweakSelect, TweakText, TweakNumber, TweakColor, TweakButton.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// TweakRadio is the segmented control for 2–3 short options (auto-falls-back to
+// TweakSelect past ~16/~10 chars per label); reach for TweakSelect directly when
+// options are many or long. For color tweaks always curate 3-4 options rather than
+// a free picker; an option can also be a whole 2–5 color palette (the stored value
+// is the array). The Tweak* controls are a floor, not a ceiling — build custom
+// controls inside the panel if a tweak calls for UI they don't cover.
+/* END USAGE */
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(clampToViewport);
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-omelette-chrome=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+</script>
+<script type="text/babel" data-presets="react">
+/* === site/Tweaks.jsx (inbakat) === */
+// Tweaks — a large, playful control surface that reshapes the whole page.
+// Everything is applied non-destructively: CSS-variable overrides + extra rules
+// are written into a single <style id="tweak-overrides"> block, a parallax
+// multiplier global is set, and optional sections are shown/hidden. The section
+// components themselves are never edited, so resetting the tweaks always brings
+// the original design back.
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "mood": "ostersjo",
+  "accent": "#2C4BD4",
+  "accentEverywhere": false,
+  "contentWidth": "normal",
+  "sectionSpace": "normal",
+  "sectionLines": true,
+  "corners": "mjuka",
+  "shadow": "mjuk",
+  "motion": "normal",
+  "buttonStyle": "fylld",
+  "typeScale": "normal",
+  "bodySize": "normal",
+  "uppercaseHeadings": false,
+  "heroHeight": "full",
+  "heroAlign": "vanster",
+  "heroGlow": true,
+  "heroBadge": true,
+  "scrollCue": true,
+  "whyLayout": "tva",
+  "whyNumbers": true,
+  "whyUnderline": true,
+  "schedRail": true,
+  "schedDotsFilled": false,
+  "texture": "ingen",
+  "showSchema": true,
+  "showPlats": true,
+  "showPris": true,
+  "showFolj": true,
+  "showFaq": true
+}/*EDITMODE-END*/;
+
+// ---- Färgstämningar: each remaps the base palette so every semantic alias cascades. ----
+const TWEAK_MOODS = {
+  ostersjo: { label: 'Östersjö', vars: {} },
+  solnedgang: {
+    label: 'Solnedgång',
+    vars: {
+      '--sand': '#F3E4CA', '--sand-deep': '#E6C994', '--sand-hair': '#D8B981',
+      '--sea': '#B4592C', '--sea-deep': '#5E3320', '--sea-soft': '#C8753F',
+      '--dune': '#C8923F', '--dune-soft': '#D7A857', '--ink': '#33271F',
+      '--sea-tint-1': '#F4E1D4', '--sea-tint-2': '#E8C6B0', '--sea-tint-3': '#D9A584',
+      '--sand-tint-1': '#FBF2E0', '--sand-tint-2': '#F6E8CD', '--sand-tint-3': '#EFD7AE',
+      '--dune-tint-1': '#EFE6D2', '--dune-tint-2': '#E0CDA4', '--dune-tint-3': '#CDB178',
+    },
+  },
+  kvallsdopp: {
+    label: 'Kvällsdopp',
+    vars: {
+      '--sand': '#DCE7E8', '--sand-deep': '#BBD0D1', '--sand-hair': '#9FBBBD',
+      '--sea': '#2A5C72', '--sea-deep': '#122E3B', '--sea-soft': '#3E7589',
+      '--dune': '#5C8470', '--dune-soft': '#74998A', '--ink': '#1E2E36', '--white': '#F4F8F8',
+      '--sea-tint-1': '#D2E0E3', '--sea-tint-2': '#A9C5CB', '--sea-tint-3': '#80A7B0',
+      '--sand-tint-1': '#EAF1F2', '--sand-tint-2': '#D9E6E7', '--sand-tint-3': '#C3D7D9',
+    },
+  },
+  morgonljus: {
+    label: 'Morgonljus',
+    vars: {
+      '--sand': '#FBF5E8', '--sand-deep': '#EEE2C6', '--sand-hair': '#DAC9A0',
+      '--sea': '#3E8597', '--sea-deep': '#225863', '--sea-soft': '#5BA0B1',
+      '--dune': '#7FA065', '--ink': '#2D2A22',
+      '--sea-tint-1': '#E6F0F1', '--sea-tint-2': '#C7DEE2', '--sea-tint-3': '#A2C6CD',
+    },
+  },
+  gras: {
+    label: 'Gräs & sand',
+    vars: {
+      '--sand': '#EEE8CF', '--sand-deep': '#D8CC9F', '--sand-hair': '#C3B585',
+      '--sea': '#557A4A', '--sea-deep': '#2C4226', '--sea-soft': '#6E9760',
+      '--dune': '#7B9A5C', '--dune-soft': '#94B073', '--ink': '#262A1F',
+      '--sea-tint-1': '#E3EAD7', '--sea-tint-2': '#C6D5B2', '--sea-tint-3': '#A4BD8B',
+    },
+  },
+  korall: {
+    label: 'Korallrev',
+    vars: {
+      '--sand': '#FBEDE6', '--sand-deep': '#F4D2C4', '--sand-hair': '#E7B9A6',
+      '--sea': '#C0397B', '--sea-deep': '#6E1A47', '--sea-soft': '#D2629A',
+      '--dune': '#E2603A', '--dune-soft': '#EC8460', '--ink': '#34222A',
+      '--sea-tint-1': '#F8DEE9', '--sea-tint-2': '#F0BBD2', '--sea-tint-3': '#E595B7',
+    },
+  },
+  midnatt: {
+    label: 'Midnattssol',
+    vars: {
+      '--sand': '#E7E3F0', '--sand-deep': '#CFC8E2', '--sand-hair': '#B3A9D0',
+      '--sea': '#4B3F8F', '--sea-deep': '#241B52', '--sea-soft': '#6557A8',
+      '--dune': '#9A6FB0', '--dune-soft': '#B189C2', '--ink': '#241F33', '--white': '#F6F4FB',
+      '--sea-tint-1': '#E3DEF2', '--sea-tint-2': '#C9BFE6', '--sea-tint-3': '#AA9CD6',
+    },
+  },
+};
+
+const TWEAK_ACCENTS = [
+  { c: '#2C4BD4', deep: '#1E36A6' }, // Kungsblå
+  { c: '#E2603A', deep: '#C04723' }, // Korall
+  { c: '#4F7A3D', deep: '#3A5C2D' }, // Gräsgrön
+  { c: '#2E6F80', deep: '#1B4750' }, // Havsblå
+  { c: '#C0397B', deep: '#97285E' }, // Hallon
+  { c: '#E0A21B', deep: '#B27E10' }, // Solgul
+];
+const ACCENT_DEEP = Object.fromEntries(TWEAK_ACCENTS.map((a) => [a.c.toLowerCase(), a.deep]));
+
+const TWEAK_CORNERS = {
+  skarpa: { '--radius-xs': '2px', '--radius-sm': '2px', '--radius-md': '3px', '--radius-lg': '4px', '--radius-pebble': '3px' },
+  mjuka: {},
+  runda: { '--radius-sm': '14px', '--radius-md': '20px', '--radius-lg': '30px', '--radius-pebble': '999px' },
+};
+
+const TWEAK_SHADOW = {
+  platt: { '--shadow-sm': 'none', '--shadow-md': 'none', '--shadow-lg': 'none' },
+  mjuk: {},
+  djup: {
+    '--shadow-sm': '0 2px 6px rgba(38,36,31,0.10)',
+    '--shadow-md': '0 12px 30px rgba(38,36,31,0.16)',
+    '--shadow-lg': '0 30px 70px rgba(27,71,80,0.26)',
+  },
+};
+
+const TWEAK_TYPE = {
+  stram: { '--fs-hero': 'clamp(2.4rem, 6.4vw, 5rem)', '--fs-display': '2.7rem', '--fs-h1': '2.05rem', '--fs-h2': '1.6rem', '--fs-h3': '1.25rem' },
+  normal: {},
+  stor: { '--fs-hero': 'clamp(3.4rem, 9vw, 7.6rem)', '--fs-display': '3.9rem', '--fs-h1': '3rem', '--fs-h2': '2.25rem', '--fs-h3': '1.55rem' },
+};
+
+const TWEAK_WIDTH = { smal: { '--maxw-content': '940px' }, normal: {}, bred: { '--maxw-content': '1320px' } };
+const TWEAK_SPACE = {
+  kompakt: { '--section-pad-y': 'clamp(40px, 5vw, 64px)' },
+  normal: {},
+  luftig: { '--section-pad-y': 'clamp(88px, 13vw, 176px)' },
+};
+const TWEAK_BODY = { liten: { '--fs-body': '0.97rem' }, normal: {}, stor: { '--fs-body': '1.18rem' } };
+const TWEAK_HEROH = { kort: '78vh', full: '100vh', hog: '114vh' };
+
+const TEXTURE_DOTS = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Ccircle cx='3' cy='3' r='1.6' fill='%232E6F80' fill-opacity='0.13'/%3E%3C/svg%3E\")";
+const TEXTURE_WAVES = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Cpath d='M0 20 C 20 6, 40 6, 60 20 S 100 34, 120 20' fill='none' stroke='%232E6F80' stroke-opacity='0.10' stroke-width='2'/%3E%3C/svg%3E\")";
+const TEXTURE_GRAIN = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E\")";
+
+function buildVarBlock(obj) {
+  const body = Object.entries(obj).map(([k, v]) => `  ${k}: ${v};`).join('\n');
+  return body ? `:root{\n${body}\n}` : '';
+}
+
+function Tweaks() {
+  const { useTweaks, TweaksPanel, TweakSection, TweakSelect, TweakRadio, TweakToggle, TweakColor } = window;
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const vars = {
+      ...(TWEAK_MOODS[t.mood] ? TWEAK_MOODS[t.mood].vars : {}),
+      ...(TWEAK_CORNERS[t.corners] || {}),
+      ...(TWEAK_SHADOW[t.shadow] || {}),
+      ...(TWEAK_TYPE[t.typeScale] || {}),
+      ...(TWEAK_WIDTH[t.contentWidth] || {}),
+      ...(TWEAK_SPACE[t.sectionSpace] || {}),
+      ...(TWEAK_BODY[t.bodySize] || {}),
+    };
+    const accent = t.accent || '#2C4BD4';
+    vars['--royal'] = accent;
+    vars['--royal-deep'] = ACCENT_DEEP[accent.toLowerCase()] || accent;
+
+    const texture = t.texture === 'prickar' ? TEXTURE_DOTS : t.texture === 'vagor' ? TEXTURE_WAVES : t.texture === 'kornig' ? TEXTURE_GRAIN : '';
+
+    const rules = [];
+
+    // --- background texture ---
+    if (texture) rules.push(`body{background-image:${texture};${t.texture === 'prickar' ? 'background-size:28px 28px;' : t.texture === 'vagor' ? 'background-size:120px 40px;' : ''}}`);
+
+    // --- section accent bars ---
+    if (!t.sectionLines) rules.push('#schema > div[aria-hidden="true"]:first-child, #anmalan > div[aria-hidden="true"]:first-child{display:none;}');
+
+    // --- motion ---
+    if (t.motion === 'lugn') rules.push('.drift-slow,.drift-slower,.bob{animation:none!important;}');
+    if (t.motion === 'livlig') rules.push('.drift-slow{animation-duration:8s!important;}.drift-slower{animation-duration:12s!important;}.bob{animation-duration:4s!important;}');
+
+    // --- button style ---
+    if (t.buttonStyle === 'kontur') rules.push('.ds-btn[data-variant="primary"]{background:transparent!important;color:var(--royal)!important;box-shadow:inset 0 0 0 2px var(--royal)!important;}');
+    if (t.buttonStyle === 'mjuk') rules.push('.ds-btn[data-variant="primary"]{background:color-mix(in srgb, var(--royal) 16%, transparent)!important;color:var(--royal-deep)!important;box-shadow:none!important;}');
+
+    // --- uppercase headings ---
+    if (t.uppercaseHeadings) rules.push('h1,h2,h3{text-transform:uppercase;letter-spacing:-0.01em;}');
+
+    // --- hero ---
+    rules.push(`#top{min-height:${TWEAK_HEROH[t.heroHeight] || '100vh'}!important;}`);
+    if (t.heroAlign === 'center') rules.push('#top .ds-container{text-align:center;}#top .ds-container .hero-rise{margin-left:auto;margin-right:auto;}#top .hr4{justify-content:center;}');
+    if (t.heroGlow) rules.push('#top::after{content:"";position:absolute;left:50%;top:34%;width:min(70vw,720px);height:min(70vw,720px);transform:translate(-50%,-50%);background:radial-gradient(circle, color-mix(in srgb, var(--dune-soft) 40%, transparent) 0%, transparent 62%);pointer-events:none;z-index:0;}');
+    if (!t.heroBadge) rules.push('#top .hr1{display:none!important;}');
+    if (!t.scrollCue) rules.push('#top a[aria-label="Scrolla ner"]{display:none!important;}');
+
+    // --- why section ---
+    if (t.whyLayout === 'en') rules.push('.why-list{grid-template-columns:1fr!important;}.why-item{max-width:60ch;}');
+    if (!t.whyNumbers) rules.push('.why-num,.why-rule{display:none!important;}.why-index{margin-bottom:0!important;}');
+    if (!t.whyUnderline) rules.push('.why-ul{display:none!important;}');
+    if (t.accentEverywhere) rules.push('.ds-eyebrow{color:var(--royal)!important;}.why-num{color:var(--royal)!important;}.why-ul path{stroke:var(--royal)!important;}');
+
+    // --- schedule ---
+    if (!t.schedRail) rules.push('#schema div[aria-hidden="true"][style*="width: 2px"], #schema div[aria-hidden="true"][style*="width:2px"]{display:none!important;}');
+    if (t.schedDotsFilled) rules.push('.sched-dot{background:var(--royal)!important;border-color:var(--royal)!important;}');
+
+    let el = document.getElementById('tweak-overrides');
+    if (!el) { el = document.createElement('style'); el.id = 'tweak-overrides'; document.head.appendChild(el); }
+    el.textContent = buildVarBlock(vars) + '\n' + rules.join('\n');
+
+    window.__parallaxMul = t.motion === 'lugn' ? 0 : t.motion === 'livlig' ? 1.8 : 1;
+
+    const setShown = (id, shown) => { const s = document.getElementById(id); if (s) s.style.display = shown ? '' : 'none'; };
+    setShown('schema', t.showSchema);
+    setShown('plats', t.showPlats);
+    setShown('pris', t.showPris);
+    setShown('folj', t.showFolj);
+    setShown('fragor', t.showFaq);
+  });
+
+  const moodOptions = Object.keys(TWEAK_MOODS).map((k) => ({ value: k, label: TWEAK_MOODS[k].label }));
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Stämning & färg" />
+      <TweakSelect label="Färgstämning" value={t.mood} options={moodOptions} onChange={(v) => setTweak('mood', v)} />
+      <TweakColor label="CTA-accent" value={t.accent} options={TWEAK_ACCENTS.map((a) => a.c)} onChange={(v) => setTweak('accent', v)} />
+      <TweakToggle label="Accentfärg överallt" value={t.accentEverywhere} onChange={(v) => setTweak('accentEverywhere', v)} />
+
+      <TweakSection label="Layout & rytm" />
+      <TweakRadio label="Innehållsbredd" value={t.contentWidth} options={['smal', 'normal', 'bred']} onChange={(v) => setTweak('contentWidth', v)} />
+      <TweakRadio label="Sektionsavstånd" value={t.sectionSpace} options={['kompakt', 'normal', 'luftig']} onChange={(v) => setTweak('sectionSpace', v)} />
+      <TweakToggle label="Accentlinjer på sektioner" value={t.sectionLines} onChange={(v) => setTweak('sectionLines', v)} />
+
+      <TweakSection label="Form & rörelse" />
+      <TweakRadio label="Hörn" value={t.corners} options={['skarpa', 'mjuka', 'runda']} onChange={(v) => setTweak('corners', v)} />
+      <TweakRadio label="Skuggdjup" value={t.shadow} options={['platt', 'mjuk', 'djup']} onChange={(v) => setTweak('shadow', v)} />
+      <TweakRadio label="Rörelse" value={t.motion} options={['lugn', 'normal', 'livlig']} onChange={(v) => setTweak('motion', v)} />
+      <TweakRadio label="Knappstil" value={t.buttonStyle} options={['fylld', 'kontur', 'mjuk']} onChange={(v) => setTweak('buttonStyle', v)} />
+
+      <TweakSection label="Typografi" />
+      <TweakRadio label="Rubrikskala" value={t.typeScale} options={['stram', 'normal', 'stor']} onChange={(v) => setTweak('typeScale', v)} />
+      <TweakRadio label="Brödtext" value={t.bodySize} options={['liten', 'normal', 'stor']} onChange={(v) => setTweak('bodySize', v)} />
+      <TweakToggle label="Versala rubriker" value={t.uppercaseHeadings} onChange={(v) => setTweak('uppercaseHeadings', v)} />
+
+      <TweakSection label="Hero" />
+      <TweakRadio label="Höjd" value={t.heroHeight} options={['kort', 'full', 'hog']} onChange={(v) => setTweak('heroHeight', v)} />
+      <TweakRadio label="Justering" value={t.heroAlign} options={['vanster', 'center']} onChange={(v) => setTweak('heroAlign', v)} />
+      <TweakToggle label="Sol-glow" value={t.heroGlow} onChange={(v) => setTweak('heroGlow', v)} />
+      <TweakToggle label="Datum-pill" value={t.heroBadge} onChange={(v) => setTweak('heroBadge', v)} />
+      <TweakToggle label="Scrolla-pil" value={t.scrollCue} onChange={(v) => setTweak('scrollCue', v)} />
+
+      <TweakSection label="Sektion: Varför delta" />
+      <TweakRadio label="Kolumner" value={t.whyLayout} options={['en', 'tva']} onChange={(v) => setTweak('whyLayout', v)} />
+      <TweakToggle label="Numrering" value={t.whyNumbers} onChange={(v) => setTweak('whyNumbers', v)} />
+      <TweakToggle label="Handritade streck" value={t.whyUnderline} onChange={(v) => setTweak('whyUnderline', v)} />
+
+      <TweakSection label="Sektion: Schema" />
+      <TweakToggle label="Tidslinje-räls" value={t.schedRail} onChange={(v) => setTweak('schedRail', v)} />
+      <TweakToggle label="Fyllda prickar" value={t.schedDotsFilled} onChange={(v) => setTweak('schedDotsFilled', v)} />
+
+      <TweakSection label="Bakgrund" />
+      <TweakSelect label="Textur" value={t.texture}
+        options={[{ value: 'ingen', label: 'Ingen' }, { value: 'vagor', label: 'Vågor' }, { value: 'prickar', label: 'Prickar' }, { value: 'kornig', label: 'Kornig' }]}
+        onChange={(v) => setTweak('texture', v)} />
+
+      <TweakSection label="Visa / dölj sektioner" />
+      <TweakToggle label="Schema" value={t.showSchema} onChange={(v) => setTweak('showSchema', v)} />
+      <TweakToggle label="Plats" value={t.showPlats} onChange={(v) => setTweak('showPlats', v)} />
+      <TweakToggle label="Pris" value={t.showPris} onChange={(v) => setTweak('showPris', v)} />
+      <TweakToggle label="Följ oss" value={t.showFolj} onChange={(v) => setTweak('showFolj', v)} />
+      <TweakToggle label="Vanliga frågor" value={t.showFaq} onChange={(v) => setTweak('showFaq', v)} />
+    </TweaksPanel>
+  );
+}
+window.Tweaks = Tweaks;
+
+</script>
+
+<script type="text/babel" data-presets="react">
+  function App() {
+    const scrollToForm = React.useCallback(() => {
+      const el = document.getElementById('anmalan');
+      if (el) window.scrollTo({ top: el.offsetTop - 40, behavior: 'smooth' });
+    }, []);
+    return (
+      <React.Fragment>
+        <window.Nav onRegister={scrollToForm} />
+        <main>
+          <window.Hero onRegister={scrollToForm} />
+          <window.Marquee />
+          <window.Why />
+          <window.Stats />
+          <window.Schedule />
+          <window.Moment onRegister={scrollToForm} />
+          <window.Prize />
+          <window.Gallery />
+          <window.Location />
+          <window.Faq />
+          <window.Follow />
+          <window.Registration onRegister={scrollToForm} />
+        </main>
+        <window.Footer />
+        <window.Tweaks />
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+  // ---- Reveal on scroll ----
+  function wireReveals() {
+    const els = document.querySelectorAll('.reveal:not(.in)');
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach((e) => io.observe(e));
+  }
+
+  // ---- Parallax (subtle) + scroll progress bar ----
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      document.querySelectorAll('[data-parallax]').forEach((el) => {
+        const sp = (parseFloat(el.getAttribute('data-parallax')) || 0) * (window.__parallaxMul ?? 1);
+        el.style.transform = `translate3d(0, ${y * sp}px, 0)`;
+      });
+      const bar = document.getElementById('scrollbar');
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+      }
+      ticking = false;
+    });
+  }
+
+  // Wire up after first paint of the React tree.
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      wireReveals();
+      // re-scan once more in case sections mounted late
+      setTimeout(wireReveals, 400);
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) window.addEventListener('scroll', onScroll, { passive: true });
+      document.body.classList.add('ready');
+    }, 60);
+  });
+
+  // ---- Splash dismiss ----
+  function dismissSplash() {
+    const s = document.getElementById('splash');
+    if (s) s.classList.add('gone');
+    setTimeout(() => { if (s) s.remove(); }, 800);
+  }
+  if (document.readyState === 'complete') setTimeout(dismissSplash, 700);
+  else window.addEventListener('load', () => setTimeout(dismissSplash, 600));
+  // hard fallback
+  setTimeout(dismissSplash, 2600);
+</script>
+</body>
+</html>
