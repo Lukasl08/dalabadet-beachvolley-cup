@@ -806,6 +806,29 @@ __ds_ns.Select = __ds_scope.Select;
 
 </script>
 <link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+
+<style id="cross-device-responsive">
+  /* ===== Cross-device responsive layer — phones · tablets · laptops · desktops · TVs ===== */
+  :root {
+    /* Headings become fluid so they never overflow on small phones and scale up on large screens/TVs */
+    --fs-display: clamp(2.05rem, 6.4vw, 3.5rem) !important;
+    --fs-h1:      clamp(1.85rem, 5.6vw, 2.6rem) !important;
+    --fs-h2:      clamp(1.45rem, 4.4vw, 1.95rem) !important;
+    --fs-h3:      clamp(1.2rem, 3.2vw, 1.45rem) !important;
+    --fs-lead:    clamp(1.05rem, 2.4vw, 1.3rem) !important;
+  }
+  /* Media never forces sideways scroll on any device */
+  img, svg, video, iframe { max-width: 100%; }
+
+  /* Big monitors & TVs: widen the content column so it isn't a thin strip in the middle */
+  @media (min-width: 1700px) { :root { --maxw-content: 1340px !important; } }
+  @media (min-width: 2400px) { :root { --maxw-content: 1640px !important; } }
+
+  /* Small phones (iPhone SE, small Android): keep the giant hero word from clipping */
+  @media (max-width: 400px) {
+    :root { --fs-hero: clamp(2.4rem, 12vw, 3rem) !important; }
+  }
+</style>
 </head>
 <body style="font-family: Inter">
 
