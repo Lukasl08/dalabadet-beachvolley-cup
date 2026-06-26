@@ -1,12 +1,13 @@
-// Moment - the emotional centrepiece. A full-bleed photograph with a slow
-// parallax + Ken Burns drift and a dark scrim, big aspirational copy and a CTA.
+// Moment - the emotional centrepiece. A full-bleed photograph with a gentle
+// Ken Burns drift and a dark scrim, big aspirational copy and a CTA.
+// Stable framing (no scroll parallax) so people are never cropped mid-body.
 // This is the "you don't want to miss this" beat of the page.
 function Moment({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   return (
     <section className="bv-moment" id="kanslan">
-      <div className="bv-moment-bg" data-parallax="0.05" aria-hidden="true"
-        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.dive, 1600)})` }}></div>
+      <div className="bv-moment-bg" data-parallax="0" aria-hidden="true"
+        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.friends, 1600)})` }}></div>
       <div className="bv-moment-scrim" aria-hidden="true"></div>
 
       <div className="ds-container bv-moment-inner">
@@ -32,7 +33,7 @@ function Moment({ onRegister }) {
         .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
         .bv-moment-bg {
           position: absolute; left: 0; right: 0; top: -12%; height: 124%;
-          background-size: cover; background-position: center 35%; z-index: 0; will-change: transform;
+          background-size: cover; background-position: center 28%; z-index: 0; will-change: transform;
         }
         @media (prefers-reduced-motion: no-preference) {
           .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }
