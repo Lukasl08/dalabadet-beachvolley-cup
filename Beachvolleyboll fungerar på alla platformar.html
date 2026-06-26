@@ -1086,18 +1086,10 @@ function Hero({ onRegister }) {
         </svg>
       </div>
 
-      {/* Real-photo cluster - floating, gently drifting beach-volley moments */}
+      {/* Single floating postcard photo, lower-right of the hero. */}
       <div className="hero-photos" aria-hidden="true">
-        <div className="hp-wrap hp-a" data-parallax="-0.05">
-          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.dive, 700)} alt="" loading="eager" /></figure>
-        </div>
-        <div className="hp-wrap hp-b" data-parallax="0.07">
-          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.friends, 700)} alt="" loading="eager" /></figure>
-        </div>
-        <div className="hp-wrap hp-c" data-parallax="-0.1">
-          <figure className="hero-photo hero-photo--round">
-            <img src={window.BV_IMG(window.BV_PHOTOS.ballClose, 500)} alt="" loading="eager" />
-          </figure>
+        <div className="hp-wrap hp-a" data-parallax="0.05">
+          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.friends, 800)} alt="" loading="eager" /></figure>
         </div>
       </div>
 
@@ -1114,35 +1106,26 @@ function Hero({ onRegister }) {
         }
         .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
         .hero-photo--round { border-radius: 999px; }
-        .hp-a { width: 52%; top: 20%; right: 28%; }
-        .hp-a .hero-photo { aspect-ratio: 3 / 4; }
-        .hp-b { width: 47%; top: 50%; right: 1%; }
-        .hp-b .hero-photo { aspect-ratio: 4 / 5; }
-        .hp-c { width: 23%; top: 12%; right: 6%; }
-        .hp-c .hero-photo { aspect-ratio: 1 / 1; }
+        .hp-a { width: 50%; top: 42%; right: 5%; }
+        .hp-a .hero-photo { aspect-ratio: 3 / 2; }
 
         @media (prefers-reduced-motion: no-preference) {
-          .hp-a .hero-photo { animation: heroFloatA 6.5s ease-in-out infinite alternate; }
-          .hp-b .hero-photo { animation: heroFloatB 7.6s ease-in-out infinite alternate; }
-          .hp-c .hero-photo { animation: heroFloatC 5.4s ease-in-out infinite alternate; }
+          .hp-a .hero-photo { animation: heroFloatA 7s ease-in-out infinite alternate; }
           .hero-photo img { animation: heroKen 20s ease-in-out infinite alternate; }
-          .hp-b .hero-photo img { animation-duration: 24s; }
         }
-        @keyframes heroFloatA { from { transform: rotate(-5deg) translateY(0); } to { transform: rotate(-5deg) translateY(-18px); } }
-        @keyframes heroFloatB { from { transform: rotate(4.5deg) translateY(0); } to { transform: rotate(4.5deg) translateY(-13px); } }
-        @keyframes heroFloatC { from { transform: rotate(-9deg) translateY(0); } to { transform: rotate(-9deg) translateY(10px); } }
+        @keyframes heroFloatA { from { transform: rotate(-4deg) translateY(0); } to { transform: rotate(-4deg) translateY(-14px); } }
         @keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.16); } }
 
         @media (max-width: 980px) { .hero-photos { display: none; } }
 
-        /* Narrow-screen photo row (shown when the floating cluster is hidden). */
-        .hero-strip { display: none; gap: 10px; margin-top: 1.7em; max-width: 460px; }
+        /* One postcard photo on narrow screens (floating photo hidden there). */
+        .hero-strip { display: none; margin-top: 1.7em; max-width: 420px; }
         .hero-strip img {
-          width: 33.33%; aspect-ratio: 1 / 1; object-fit: cover;
-          border-radius: 16px; border: 4px solid var(--white); box-shadow: var(--shadow-md);
+          width: 100%; aspect-ratio: 3 / 2; object-fit: cover;
+          border-radius: 18px; border: 5px solid var(--white); box-shadow: var(--shadow-lg);
           background: var(--sea-tint-1);
         }
-        @media (max-width: 980px) { .hero-strip { display: flex; } }
+        @media (max-width: 980px) { .hero-strip { display: block; } }
 
         /* Sand shelf — a full-width beige fill that follows the lead text in flow,
            so the paragraph always sits on sand, never on the blue sea, on every
@@ -1217,12 +1200,10 @@ function Hero({ onRegister }) {
             <Button as="a" href="#varfor" variant="secondary" size="lg">Läs mer</Button>
           </div>
 
-          {/* Photo row — shown on narrower screens (phones/tablets) where the
-              floating photo cluster is hidden, so the hero is never image-empty. */}
+          {/* One postcard photo, shown on narrow screens where the floating
+              photo is hidden, so the hero is never image-empty. */}
           <div className="hero-strip" aria-hidden="true">
-            <img src={window.BV_IMG(window.BV_PHOTOS.dive, 500)} alt="" loading="eager" />
-            <img src={window.BV_IMG(window.BV_PHOTOS.friends, 500)} alt="" loading="eager" />
-            <img src={window.BV_IMG(window.BV_PHOTOS.serve, 500)} alt="" loading="eager" />
+            <img src={window.BV_IMG(window.BV_PHOTOS.friends, 800)} alt="" loading="eager" />
           </div>
         </div>
       </div>
