@@ -7,7 +7,7 @@
 
 <style>
 /* === Designsystem (inbakat) === */
-/* Dalabadet Beachvolley Cup — Webfonts
+/* Dalabadet Beachvolley Cup - Webfonts
    All three families are available on Google Fonts, so no substitution was
    needed against the brief.
      - Bricolage Grotesque  → display / headings (uppercase, tight kerning)
@@ -16,7 +16,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap');
 
-/* Dalabadet Beachvolley Cup — Color tokens
+/* Dalabadet Beachvolley Cup - Color tokens
    A muted Swedish-summer-beach palette: pale sand, dampened Baltic blue,
    beach grass, and a single strong royal-blue (kungsblå) accent reserved for
    the most important action (registration). */
@@ -28,7 +28,7 @@
   --sea:        #2E6F80; /* primary accent, headings */
   --sea-deep:   #1B4750; /* dark text, footer / CTA backgrounds */
   --dune:       #6E8B57; /* beach grass, secondary accent, palm detail */
-  --royal:      #2C4BD4; /* the ONLY strong color — kungsblå, CTA buttons, used sparingly */
+  --royal:      #2C4BD4; /* the ONLY strong color - kungsblå, CTA buttons, used sparingly */
   --ink:        #26241F; /* body text */
   --white:      #FBF8F1; /* cards, button text on dark ground */
 
@@ -90,7 +90,7 @@
   --border-on-dark: rgba(251, 248, 241, 0.18);
 }
 
-/* Dalabadet Beachvolley Cup — Typography tokens */
+/* Dalabadet Beachvolley Cup - Typography tokens */
 
 :root {
   /* --- Families --- */
@@ -130,12 +130,12 @@
   --text-display-spacing: var(--ls-display);
 }
 
-/* Base element defaults — opt-in by linking styles.css */
+/* Base element defaults - opt-in by linking styles.css */
 :root {
   --type-heading-transform: uppercase;
 }
 
-/* Dalabadet Beachvolley Cup — Spacing & layout tokens
+/* Dalabadet Beachvolley Cup - Spacing & layout tokens
    8px base rhythm. */
 
 :root {
@@ -163,7 +163,7 @@
   --gutter: clamp(var(--space-5), 5vw, var(--space-8));
 }
 
-/* Dalabadet Beachvolley Cup — Effects: radii, borders, shadows, motion
+/* Dalabadet Beachvolley Cup - Effects: radii, borders, shadows, motion
    Soft, low-contrast surfaces. Shadows are warm and gentle (sun on sand),
    never the cold blue/black drop-shadows of generic web UI. */
 
@@ -174,7 +174,7 @@
   --radius-md:   14px;  /* default cards, inputs */
   --radius-lg:   22px;  /* feature panels */
   --radius-pill: 999px; /* tags, chips */
-  /* Playful organic "beach-pebble" corner — used on buttons so they feel
+  /* Playful organic "beach-pebble" corner - used on buttons so they feel
      hand-shaped rather than a plain pill. Gently asymmetric, all corners soft. */
   --radius-pebble: 14px 22px 16px 26px / 26px 16px 24px 14px;
 
@@ -197,7 +197,7 @@
   --dur-slow:   600ms; /* @kind other */
 }
 
-/* Dalabadet Beachvolley Cup — Base element styles & helpers
+/* Dalabadet Beachvolley Cup - Base element styles & helpers
    Light reset + sensible defaults that map elements onto the tokens. */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -408,11 +408,11 @@ const __ds_scope = {};
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * Badge / Tag — a small mono-font pill for labels, status and meta
+ * Badge / Tag - a small mono-font pill for labels, status and meta
  * (e.g. "GRATIS", "ALLA NIVÅER", a schedule time chip).
  *
  * tone: sea | grass | sand | dark | royal
- * The royal tone is strong — use it only to flag the single key fact.
+ * The royal tone is strong - use it only to flag the single key fact.
  */
 function Badge({
   tone = 'sea',
@@ -470,7 +470,7 @@ const {
   useCallback
 } = React;
 /**
- * Button — the brand's primary action element.
+ * Button - the brand's primary action element.
  *
  * Three variants:
  *   primary   → royal blue (kungsblå), the single strong color; reserve for the most
@@ -479,9 +479,9 @@ const {
  *   ghost     → transparent, for nav links and low-emphasis actions.
  *
  * Press behaviour (the brand signature), automatic on every Button:
- *   1. The button sinks ~2px and scales to 97% — pressed into the sand.
+ *   1. The button sinks ~2px and scales to 97% - pressed into the sand.
  *   2. A round sun-glint (radial white gradient) is born exactly where the
- *      pointer landed, grows and fades over ~0.6s — a glint of sun on water.
+ *      pointer landed, grows and fades over ~0.6s - a glint of sun on water.
  * Both respect prefers-reduced-motion (the ripple is skipped).
  */
 function Button({
@@ -587,7 +587,7 @@ Object.assign(__ds_scope, { Button });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * Card — soft, warm surface used for info blocks (Klasser / Regler / Pris),
+ * Card - soft, warm surface used for info blocks (Klasser / Regler / Pris),
  * schedule panels, the registration form, etc.
  *
  * tone:
@@ -674,7 +674,7 @@ const controlBase = {
 };
 
 /**
- * Input — labelled text/email/tel/number field used in the registration form.
+ * Input - labelled text/email/tel/number field used in the registration form.
  * Numeric inputs render in the mono font to match the "match-clock" numerals.
  */
 function Input({
@@ -742,7 +742,7 @@ const labelStyle = {
 };
 
 /**
- * Select — labelled dropdown (e.g. "Antal spelare" 2–6). Caret drawn with an
+ * Select - labelled dropdown (e.g. "Antal spelare" 2-6). Caret drawn with an
  * inline SVG background so it matches the sea-blue palette.
  */
 function Select({
@@ -808,7 +808,7 @@ __ds_ns.Select = __ds_scope.Select;
 <link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
 
 <style id="cross-device-responsive">
-  /* ===== Cross-device responsive layer — phones · tablets · laptops · desktops · TVs ===== */
+  /* ===== Cross-device responsive layer - phones · tablets · laptops · desktops · TVs ===== */
   :root {
     /* Headings become fluid so they never overflow on small phones and scale up on large screens/TVs */
     --fs-display: clamp(2.05rem, 6.4vw, 3.5rem) !important;
@@ -1135,7 +1135,7 @@ function Hero({ onRegister }) {
 
         @media (max-width: 980px) { .hero-photos { display: none; } }
 
-        /* Sand shelf — a full-width beige fill that follows the lead text in flow,
+        /* Sand shelf - a full-width beige fill that follows the lead text in flow,
            so the paragraph always sits on sand, never on the blue sea, on every
            viewport. A soft top fade reads as the natural beach waterline. */
         .hero-lower { position: relative; margin-top: 2.7em; }
@@ -1190,7 +1190,7 @@ function Hero({ onRegister }) {
         </h1>
 
         {/* Lower group sits on a full-bleed "sand shelf" so the lead text never
-            starts on the blue sea band — on any viewport size or device. */}
+            starts on the blue sea band - on any viewport size or device. */}
         <div className="hero-lower">
           <p className="hero-rise hr3" style={{
             fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
