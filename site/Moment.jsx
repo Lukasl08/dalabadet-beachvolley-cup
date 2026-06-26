@@ -7,7 +7,7 @@ function Moment({ onRegister }) {
   return (
     <section className="bv-moment" id="kanslan">
       <div className="bv-moment-bg" data-parallax="0" aria-hidden="true"
-        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.friends, 1600)})` }}></div>
+        style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.heroAction, 1600)})` }}></div>
       <div className="bv-moment-scrim" aria-hidden="true"></div>
 
       <div className="ds-container bv-moment-inner">
@@ -33,7 +33,7 @@ function Moment({ onRegister }) {
         .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
         .bv-moment-bg {
           position: absolute; left: 0; right: 0; top: -12%; height: 124%;
-          background-size: cover; background-position: center 28%; z-index: 0; will-change: transform;
+          background-size: cover; background-position: center 38%; z-index: 0; will-change: transform;
         }
         @media (prefers-reduced-motion: no-preference) {
           .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }

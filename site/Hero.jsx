@@ -85,7 +85,12 @@ function Hero({ onRegister }) {
           <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.dive, 700)} alt="" loading="eager" /></figure>
         </div>
         <div className="hp-wrap hp-b" data-parallax="0.07">
-          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.lifestyle, 700)} alt="" loading="eager" /></figure>
+          <figure className="hero-photo"><img src={window.BV_IMG(window.BV_PHOTOS.friends, 700)} alt="" loading="eager" /></figure>
+        </div>
+        <div className="hp-wrap hp-c" data-parallax="-0.1">
+          <figure className="hero-photo hero-photo--round">
+            <img src={window.BV_IMG(window.BV_PHOTOS.ballClose, 500)} alt="" loading="eager" />
+          </figure>
         </div>
       </div>
 
@@ -102,22 +107,35 @@ function Hero({ onRegister }) {
         }
         .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
         .hero-photo--round { border-radius: 999px; }
-        .hp-a { width: 50%; top: 16%; right: 27%; }
+        .hp-a { width: 52%; top: 20%; right: 28%; }
         .hp-a .hero-photo { aspect-ratio: 3 / 4; }
-        .hp-b { width: 46%; top: 46%; right: 3%; }
+        .hp-b { width: 47%; top: 50%; right: 1%; }
         .hp-b .hero-photo { aspect-ratio: 4 / 5; }
+        .hp-c { width: 23%; top: 12%; right: 6%; }
+        .hp-c .hero-photo { aspect-ratio: 1 / 1; }
 
         @media (prefers-reduced-motion: no-preference) {
           .hp-a .hero-photo { animation: heroFloatA 6.5s ease-in-out infinite alternate; }
           .hp-b .hero-photo { animation: heroFloatB 7.6s ease-in-out infinite alternate; }
+          .hp-c .hero-photo { animation: heroFloatC 5.4s ease-in-out infinite alternate; }
           .hero-photo img { animation: heroKen 20s ease-in-out infinite alternate; }
           .hp-b .hero-photo img { animation-duration: 24s; }
         }
         @keyframes heroFloatA { from { transform: rotate(-5deg) translateY(0); } to { transform: rotate(-5deg) translateY(-18px); } }
         @keyframes heroFloatB { from { transform: rotate(4.5deg) translateY(0); } to { transform: rotate(4.5deg) translateY(-13px); } }
+        @keyframes heroFloatC { from { transform: rotate(-9deg) translateY(0); } to { transform: rotate(-9deg) translateY(10px); } }
         @keyframes heroKen { from { transform: scale(1.04); } to { transform: scale(1.16); } }
 
         @media (max-width: 980px) { .hero-photos { display: none; } }
+
+        /* Narrow-screen photo row (shown when the floating cluster is hidden). */
+        .hero-strip { display: none; gap: 10px; margin-top: 1.7em; max-width: 460px; }
+        .hero-strip img {
+          width: 33.33%; aspect-ratio: 1 / 1; object-fit: cover;
+          border-radius: 16px; border: 4px solid var(--white); box-shadow: var(--shadow-md);
+          background: var(--sea-tint-1);
+        }
+        @media (max-width: 980px) { .hero-strip { display: flex; } }
 
         /* Sand shelf — a full-width beige fill that follows the lead text in flow,
            so the paragraph always sits on sand, never on the blue sea, on every
@@ -129,9 +147,9 @@ function Hero({ onRegister }) {
           width: 100vw; top: -2em; height: 300vh;
           background: linear-gradient(to bottom, rgba(239,227,196,0) 0, #EFE3C4 2em, #EFE3C4 100%);
         }
-        /* On desktop the floating photos use the lower-right, and the tall title
-           already pushes the paragraph onto the sand — so the full-width sand
-           shelf isn't needed and would cover the photos. Mobile keeps it. */
+        /* On wide screens the floating photos use the lower-right; the tall title
+           already drops the paragraph onto the sand, so the shelf isn't needed
+           and would otherwise cover those photos. Narrow screens keep the shelf. */
         @media (min-width: 981px) { .hero-lower::before { display: none; } }
       `}</style>
 
@@ -190,6 +208,14 @@ function Hero({ onRegister }) {
           <div className="hero-rise hr4" style={{ display: 'flex', gap: '12px', marginTop: '1.7em', flexWrap: 'wrap' }}>
             <Button variant="primary" size="lg" onClick={onRegister}>Anmäl ditt lag</Button>
             <Button as="a" href="#varfor" variant="secondary" size="lg">Läs mer</Button>
+          </div>
+
+          {/* Photo row — shown on narrower screens (phones/tablets) where the
+              floating photo cluster is hidden, so the hero is never image-empty. */}
+          <div className="hero-strip" aria-hidden="true">
+            <img src={window.BV_IMG(window.BV_PHOTOS.dive, 500)} alt="" loading="eager" />
+            <img src={window.BV_IMG(window.BV_PHOTOS.friends, 500)} alt="" loading="eager" />
+            <img src={window.BV_IMG(window.BV_PHOTOS.serve, 500)} alt="" loading="eager" />
           </div>
         </div>
       </div>
