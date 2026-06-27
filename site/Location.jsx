@@ -30,7 +30,7 @@ function Location() {
             <div style={{ position: 'relative', width: '100%', aspectRatio: '520 / 380', background: 'var(--sea-tint-1)' }}>
               <iframe
                 title="Karta över Dalabadets Camping, Trelleborg"
-                src="https://maps.google.com/maps?q=55.3638,13.2092&z=15&output=embed"
+                src="https://maps.google.com/maps?q=55.3624,13.2086&z=16&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0, display: 'block' }}
