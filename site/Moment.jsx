@@ -6,7 +6,7 @@ function Moment({ onRegister }) {
   const { Button } = window.DalabadetBeachvolleyCupDesignSystem_b20b76;
   return (
     <section className="bv-moment" id="kanslan">
-      <div className="bv-moment-bg" data-parallax="0" aria-hidden="true"
+      <div className="bv-moment-bg" aria-hidden="true"
         style={{ backgroundImage: `url(${window.BV_IMG(window.BV_PHOTOS.heroAction, 1600)})` }}></div>
       <div className="bv-moment-scrim" aria-hidden="true"></div>
 
@@ -32,13 +32,15 @@ function Moment({ onRegister }) {
       <style>{`
         .bv-moment { position: relative; overflow: hidden; min-height: 86vh; display: flex; align-items: flex-end; }
         .bv-moment-bg {
-          position: absolute; left: 0; right: 0; top: -12%; height: 124%;
-          background-size: cover; background-position: center 38%; z-index: 0; will-change: transform;
+          position: absolute; inset: 0;
+          background-size: cover; background-position: center 38%; background-repeat: no-repeat;
+          z-index: 0; will-change: transform;
         }
         @media (prefers-reduced-motion: no-preference) {
           .bv-moment-bg { animation: momentKen 26s ease-in-out infinite alternate; }
         }
-        @keyframes momentKen { from { background-size: 102%; } to { background-size: 110%; } }
+        /* Gentle zoom via transform (keeps full cover, never tiles into "several images"). */
+        @keyframes momentKen { from { transform: scale(1.02); } to { transform: scale(1.08); } }
         .bv-moment-scrim {
           position: absolute; inset: 0; z-index: 1;
           background:
