@@ -120,7 +120,7 @@ function Hero({ onRegister }) {
         }
         @media (max-width: 980px) { .hero-strip { display: block; } }
 
-        /* Sand shelf — a full-width beige fill that follows the lead text in flow,
+        /* Sand shelf - a full-width beige fill that follows the lead text in flow,
            so the paragraph always sits on sand, never on the blue sea, on every
            viewport. A soft top fade reads as the natural beach waterline. */
         .hero-lower { position: relative; margin-top: 2.7em; }
@@ -179,7 +179,7 @@ function Hero({ onRegister }) {
         </h1>
 
         {/* Lower group sits on a full-bleed "sand shelf" so the lead text never
-            starts on the blue sea band — on any viewport size or device. */}
+            starts on the blue sea band - on any viewport size or device. */}
         <div className="hero-lower">
           <p className="hero-rise hr3" style={{
             fontFamily: 'var(--font-body)', fontSize: 'var(--fs-lead)', color: 'var(--ink)',
