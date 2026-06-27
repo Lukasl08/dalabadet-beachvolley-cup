@@ -1158,14 +1158,14 @@ function Hero({ onRegister }) {
       {/* Content */}
       <div className="ds-container" style={{ position: 'relative', zIndex: 5, paddingTop: '88px', paddingBottom: '40px' }}>
         <div className="hero-rise hr1" style={{
-          display: 'inline-flex', gap: '10px', alignItems: 'center',
-          fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.12em',
-          fontSize: '0.78rem', fontWeight: 500, color: 'var(--white)',
+          display: 'inline-flex', gap: '10px', alignItems: 'center', maxWidth: '100%', flexWrap: 'wrap',
+          fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em',
+          fontSize: 'clamp(0.62rem, 2.6vw, 0.78rem)', fontWeight: 500, color: 'var(--white)',
           background: 'rgba(27,71,80,0.36)', padding: '0.55em 1.05em', borderRadius: '999px',
           backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)',
         }}>
-          <span style={{ width: '7px', height: '7px', borderRadius: '999px', background: 'var(--royal)', boxShadow: '0 0 0 4px rgba(44,75,212,0.25)' }}></span>
-          Datum meddelas snart · Dalabadet, Trelleborg
+          <span style={{ flex: 'none', width: '7px', height: '7px', borderRadius: '999px', background: 'var(--royal)', boxShadow: '0 0 0 4px rgba(44,75,212,0.25)' }}></span>
+          <span style={{ minWidth: 0 }}>Datum meddelas snart · Dalabadet, Trelleborg</span>
         </div>
 
         <h1 className="hero-rise hr2" style={{
